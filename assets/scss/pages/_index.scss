@@ -12,6 +12,31 @@
   background-color: rgb(70, 255, 246);
 }
 
+//mouseFlash閃爍
+$mouse-opacitys: (
+  mouseFlash:100%,
+  //100%完全不透明
+  // pointLight-in:100%
+);
+
+@each $name, $opacity in $mouse-opacitys {
+  .#{$name} {
+
+    // 這裡不要加背景顏色，以免擋到閃爍效果
+    @keyframes #{$name}-flash {
+      40% {
+        background-color: darken(rgb(70, 255, 246), $opacity);
+      }
+
+      80% {
+        background-color: (rgb(255, 251, 39, $opacity));
+      }
+    }
+
+    animation: .6s #{$name}-flash infinite;
+  }
+}
+
 
 .pointLight {
   width: 50px;
@@ -33,7 +58,7 @@
 //另外不可用fill，fill是用在SVG上的
 $opacitys: (
   pointLight-out:100%,
-  //完全不透明
+  //100%完全不透明
   pointLight-in:100%
 );
 
