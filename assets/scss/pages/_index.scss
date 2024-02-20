@@ -1,3 +1,68 @@
-.index-title {
-  font-size: 100px;
+.board {
+  width: 100%;
+  height: 1000px;
+  background-image: url(/assets/images/彈珠檯-板子.png);
+
+  @include picture() {}
+}
+
+.mouseLight {
+  width: 50px;
+  height: 50px;
+  background-color: rgb(70, 255, 246);
+}
+
+
+.pointLight {
+  width: 50px;
+  height: 50px;
+
+}
+
+.pointLight-out {
+  background-color: #ff7a2d;
+}
+
+.pointLight-in {
+  background-color: #ff7a2d;
+}
+
+
+//sass迴圈+@keyframe:燈泡亮暗
+//記得結尾要加分號，不然一直出現錯誤
+//另外不可用fill，fill是用在SVG上的
+$opacitys: (
+  pointLight-out:100%,
+  //完全不透明
+  pointLight-in:100%
+);
+
+@each $name, $opacity in $opacitys {
+  .#{$name} {
+
+    // 這裡不要加背景顏色，以免擋到閃爍效果
+    @keyframes #{$name}-flash {
+      40% {
+        background-color: darken(#ff7a2d, $opacity);
+      }
+
+      80% {
+        background-color: darken(#ff7a2d, $opacity);
+      }
+    }
+
+    animation: .3s #{$name}-flash infinite;
+  }
+}
+
+//控制閃爍延遲
+$timings: (
+  timing-0: 0s,
+  timing-4: .15s,
+);
+
+@each $timing-name, $timing in $timings {
+  .#{$timing-name} {
+    animation-delay: $timing;
+  }
 }
