@@ -16,7 +16,6 @@
 $mouse-opacitys: (
   mouseFlash:100%,
   //100%完全不透明
-  // pointLight-in:100%
 );
 
 @each $name, $opacity in $mouse-opacitys {
@@ -44,22 +43,29 @@ $mouse-opacitys: (
 
 }
 
-.pointLight-out {
+.pointLight-out1 {
   background-color: #ff7a2d;
 }
+
+.pointLight-out2 {
+  background-color: #ff0404;
+}
+
+// .pointLight-out {
+//   background-color: #ff7a2d;
+// }
 
 .pointLight-in {
   background-color: #ff7a2d;
 }
 
 
-//sass迴圈+@keyframe:燈泡亮暗
+//pointLight 第一組閃爍
 //記得結尾要加分號，不然一直出現錯誤
 //另外不可用fill，fill是用在SVG上的
 $opacitys: (
-  pointLight-out:100%,
+  pointLight-out1:100%,
   //100%完全不透明
-  pointLight-in:100%
 );
 
 @each $name, $opacity in $opacitys {
@@ -76,18 +82,86 @@ $opacitys: (
       }
     }
 
-    animation: .3s #{$name}-flash infinite;
-  }
-}
+    animation: .6s #{$name}-flash infinite;
 
+  }
+
+}
 //控制閃爍延遲
 $timings: (
   timing-0: 0s,
-  timing-4: .15s,
+  timing-15: .15s,
 );
 
 @each $timing-name, $timing in $timings {
   .#{$timing-name} {
     animation-delay: $timing;
+  }
+}
+
+
+//pointLight-out2第二組閃爍
+$opacitys: (
+  pointLight-out2:100% //100%完全不透明
+  // pointLight-in:100%
+);
+
+@each $name, $opacity in $opacitys {
+  .#{$name} {
+
+    @keyframes #{$name}-flash-2 {
+      40% {
+        background-color: darken(#ff7a2d, $opacity);
+      }
+
+      80% {
+        background-color: darken(#ff7a2d, $opacity);
+      }
+    }
+
+    // 使用第二組 keyframes，動畫執行 20 次
+    animation: 1s #{$name}-flash-2 20;
+  }
+
+}
+
+//控制閃爍延遲
+$timings: (
+  timing-0: 0s,
+  timing-15: .15s,
+);
+
+@each $timing-name, $timing in $timings {
+  .#{$timing-name} {
+    animation-delay: $timing;
+  }
+}
+
+
+.firstGetpoint {
+  background-color: #ff9d64;
+}
+
+
+
+//第一次得分閃爍，閃6下就停止
+$opacitys: (
+  firstGetpoint:100%,
+  //100%完全不透明
+
+);
+
+@each $name, $opacity in $opacitys {
+  .#{$name} {
+
+    // 這裡不要加背景顏色，以免擋到閃爍效果
+    @keyframes #{$name}-flash {
+      40% {
+        background-color: darken(#ff7a2d, $opacity);
+      }
+
+    }
+
+    animation: .3s #{$name}-flash 6;
   }
 }
