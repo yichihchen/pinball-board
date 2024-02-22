@@ -67,13 +67,15 @@
 .pointLight {
   width: 30px;
   height: 30px;
+  font-size: 10px; //分數字體大小
 
 }
 
 .pointLight-wrap1 {
   padding-left: 0px !important;
   padding-right: 38px !important;
-  li{
+
+  li {
     margin-bottom: 3px !important;
   }
 }
@@ -82,20 +84,22 @@
 .pointLight-wrap2 {
   padding-left: 0px !important;
   padding-right: 72px !important;
+
   // padding-right: 48px !important;
-  li{
+  li {
     margin-bottom: 3px !important;
   }
-  
+
 }
 
 .pointLight-wrap3 {
   //微調位置
   position: relative;
-  top:1px;
+  top: 1px;
   padding-left: 0px !important;
   padding-right: 37px !important;
-  li{
+
+  li {
     margin-bottom: 3px !important;
   }
 }
@@ -103,9 +107,10 @@
 .pointLight-wrap4 {
   //微調位置
   position: relative;
-  top:2px;
+  top: 2px;
   padding-left: 0px !important;
-  li{
+
+  li {
     margin-bottom: 3px !important;
   }
 }
@@ -141,11 +146,12 @@
 }
 
 .pointLight-out1 {
-  background-color: #ff7a2d;
+  // background-color: #ff7a2d;
+  background: radial-gradient(circle, #ffdf61, #ff7a2d);
 }
 
 .pointLight-out2 {
-  background-color: #ff0404;
+  background-color: #ff7a2d;
 }
 
 
@@ -166,15 +172,21 @@ $mouse-opacitys: (
     // 這裡不要加背景顏色，以免擋到閃爍效果
     @keyframes #{$name}-flash {
       40% {
-        background-color: darken(rgb(70, 255, 246), $opacity);
+        background-color: darken(rgba(70, 255, 246, 0.788), $opacity);
+      }
+
+      60% {
+        background-color: (rgb(255, 251, 39, $opacity));
       }
 
       80% {
-        background-color: (rgb(255, 251, 39, $opacity));
+        background-color: darken(rgba(255, 251, 39, 0.747), $opacity);
       }
+
+
     }
 
-    animation: .6s #{$name}-flash infinite;
+    animation: 1.5s #{$name}-flash infinite;
   }
 }
 
@@ -187,7 +199,7 @@ $mouse-opacitys: (
 $opacitys: (
   pointLight-out1:100%,
   //100%完全不透明
-  pointLight-out1-opacity:0,
+  // pointLight-out1-opacity:0,
 );
 
 @each $name, $opacity in $opacitys {
@@ -195,25 +207,32 @@ $opacitys: (
 
     // 這裡不要加背景顏色，以免擋到閃爍效果
     @keyframes #{$name}-flash {
-      20% {
-        background-color: rgba(255, 122, 45, $opacity); //把顏色的透明度調整成0%，黑色不見就變成透明了!??  //darken(#ff7a2d00, $opacity)
-      }
+      // 20% {
+      //   background-color: rgba(255, 122, 45, $opacity); //把顏色的透明度調整成0%，黑色不見就變成透明了!??  //darken(#ff7a2d00, $opacity)
+      // }
+
+      // 10% {
+      //   background: radial-gradient(circle, darken(rgba(255, 223, 97, $opacity), 40%), darken(rgba(255, 122, 45, $opacity), 90%));  //darken(#ff7a2dce, $opacity)
+      // }
+
+      // 40% {
+      //   background-color: radial-gradient(circle, darken(rgba(255, 223, 97, $opacity), 40%), darken(rgba(255, 122, 45, $opacity), 90%));   // rgba(255, 122, 45, $opacity)
+      // }
+
+      // 60% {
+      //   background-color: radial-gradient(circle, darken(rgba(255, 223, 97, $opacity), 40%), darken(rgba(255, 122, 45, $opacity), 90%));   // rgba(255, 122, 45, $opacity)
+      // }
+
+      // 80% {
+      //   background:radial-gradient(circle, darken(rgba(255, 223, 97, $opacity), 40%), darken(rgba(255, 122, 45, $opacity), 90%));  // darken(#ff7a2dce, $opacity)
+      // }
 
       50% {
-        background-color: darken(#ff7a2d00, $opacity);
-      }
-
-      60% {
-        background-color: rgba(255, 122, 45, $opacity);
-      }
-
-
-      90% {
-        background-color: darken(#ff7a2d00, 100%);
+        background: radial-gradient(circle, darken(rgba(255, 223, 97, $opacity), 40%), darken(rgba(255, 122, 45, $opacity), 90%)); // darken(#ff7a2dce, $opacity)
       }
     }
 
-    animation: 2s #{$name}-flash 20;
+    animation: 1s #{$name}-flash 20;
 
   }
 
@@ -245,16 +264,16 @@ $opacitys: (
 
     @keyframes #{$name}-flash-2 {
       40% {
-        background-color: darken(#ff7a2d00, $opacity); //rgba(255, 122, 45, $opacity);
+        background: radial-gradient(circle, darken(rgba(255, 223, 97, $opacity), 40%), darken(rgba(255, 122, 45, $opacity), 90%)); // background-color: darken(#ff7a2da9, $opacity); //rgba(255, 122, 45, $opacity);
       }
 
       80% {
-        background-color: darken(#ff7a2d00, $opacity); //rgba(255, 122, 45, $opacity);
+        background: radial-gradient(circle, darken(rgba(255, 223, 97, $opacity), 40%), darken(rgba(255, 122, 45, $opacity), 90%));// background-color: darken(#ff7a2da9, $opacity); //rgba(255, 122, 45, $opacity);
       }
     }
 
     // 使用第二組 keyframes，動畫執行 40 次才停止
-    animation: 1s #{$name}-flash-2 40;
+    animation: 1s #{$name}-flash-2 60;
   }
 
 }
@@ -273,7 +292,9 @@ $timings: (
 
 
 .firstGetpoint {
-  background-color: #ff9d64;
+  // background-color: #ff7a2d;
+  // background: linear-gradient(135deg, #ff7a2d, #ffcc00); 
+  background: radial-gradient(circle, #ffdf61, #ff7a2d);
 }
 
 
@@ -291,7 +312,10 @@ $opacitys: (
     // 這裡不要加背景顏色，以免擋到閃爍效果
     @keyframes #{$name}-flash {
       40% {
-        background-color: darken(#ff7a2d, $opacity);
+        // background-color: darken(#ff7a2d, $opacity);
+        // background: radial-gradient(circle, #ffdf61, #ff7a2d);
+        background: radial-gradient(circle, darken(rgba(255, 223, 97, $opacity), 40%), darken(rgba(255, 122, 45, $opacity), 90%));
+
       }
 
     }
@@ -304,3 +328,6 @@ $opacitys: (
 .highlight {
   background-color: #ff7a2d;
 }
+
+
+//開始 & 拉桿
