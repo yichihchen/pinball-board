@@ -5,7 +5,7 @@
 .board {
   width: 640px;
   height: 800px;
-  background-image: url(/assets/images/彈珠檯-該挖空都挖了.png);
+  background-image: url(/assets/images/彈珠檯-反光修正.png);
   position: relative; //長寬固定，點點位置不會偏移
 
   @include picture() {}
