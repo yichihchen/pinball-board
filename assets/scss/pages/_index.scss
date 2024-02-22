@@ -326,7 +326,12 @@ $opacitys: (
 
 //得幾分亮起指定分數按鈕
 .highlight {
-  background-color: #ff7a2d;
+  // background-color: #ff7a2d;
+  background: radial-gradient(circle, #ffdf61, #ff7a2d);
+}
+
+.nothighlight{
+  background-color:rgb(59, 59, 59);
 }
 
 

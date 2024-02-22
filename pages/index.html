@@ -98,14 +98,15 @@
     </div>
 
 
-    <div class="ticket"><label for="ticket">彩票數</label><input type="number" id="ticket" name="ticket" required min="1" max="20" size="20" />
+    <div class="ticket"><label for="ticket">彩票數</label><input type="number" id="ticket" name="ticket" required min="1"
+        max="20" size="20" />
     </div>
-    <div class="ballNumber"><label for="ballNumber">球數</label><input type="number" id="ballNumber" name="nameballNumber" required min="1"
+    <div class="ballNumber"><label for="ballNumber">球數</label><input type="number" id="ballNumber" name="nameballNumber"
+        required min="1" max="100" size="20" /></div>
+    <div class="point"><label for="point">分數</label><input type="number" id="point" name="point" required min="1"
         max="100" size="20" /></div>
-    <div class="point"><label for="point">分數</label><input type="number" id="point" name="point" required min="1" max="100"
-        size="20" /></div>
-    <div class="gameNumber"><label for="gameNumber">局數</label><input type="number" id="gameNumber" name="gameNumber" required min="1"
-        max="100" size="20" /></div>
+    <div class="gameNumber"><label for="gameNumber">局數</label><input type="number" id="gameNumber" name="gameNumber"
+        required min="1" max="100" size="20" /></div>
 
 
     <div class="drag-module">
@@ -162,10 +163,21 @@
             const getPointId = document.getElementById(`pointLight${Number(pointAmount.value)}`);
             //這裡加上清除所有動畫樣式
             lights.forEach(function (item) {
-              item.classList.remove('firstGetpoint', 'pointLight-out1', 'pointLight-out2', 'highlight');
+              //將"不是"得分的分數反灰
+              if (item.id !== `pointLight${Number(pointAmount.value)}`) {
+                item.classList.remove('firstGetpoint', 'pointLight-out1', 'pointLight-out2', 'highlight','nothighlight');
+                item.classList.add('nothighlight');
+              } else {
+
+                item.classList.remove('firstGetpoint', 'pointLight-out1', 'pointLight-out2', 'highlight','nothighlight');
+                getPointId.classList.add('highlight');
+                console.log(item);
+                
+              }
+
             });
 
-            getPointId.classList.add('highlight');
+
 
           }
         });
