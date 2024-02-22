@@ -10,64 +10,63 @@
 
 <body>
   <%- include('./layout/header'); -%>
+    <div class="container">
+      <h1 class="index-title text-center">鼠來數趣3</h1>
 
-    <h1 class="index-title text-center">鼠來數趣3</h1>
+      <!-- board -->
+      <div class="board text-center">
 
-    <!-- board -->
-    <div class="board">
+        <!-- light flashing -->
 
-    </div>
-
-    <!-- light flashing -->
-    <div class="light">
-      <ul class="d-flex">
-        <li class="mouseLight mouseFlash rounded-circle me-4" id="mouse1"></li>
-        <li class="mouseLight mouseFlash rounded-circle me-4" id="mouse2"></li>
-        <li class="mouseLight mouseFlash rounded-circle me-4" id="mouse3"></li>
-        <li class="mouseLight mouseFlash rounded-circle me-4" id="mouse4"></li>
-      </ul>
-
-      <div class="d-flex">
-        <ul class="m-0">
-          <li class="pointLight timing-0 rounded-circle me-4" id="ponitLight15">15</li>
-          <li class="pointLight timing-0 rounded-circle me-4" id="ponitLight20">20</li>
-          <li class="pointLight timing-0 rounded-circle me-4" id="ponitLight25">25</li>
-          <li class="pointLight timing-0 rounded-circle me-4" id="ponitLight30">30</li>
+        <ul class="d-flex mouseLight-wrap justify-content-center align-items-center m-0">
+          <li class="mouseLight mouseLight1 mouseFlash rounded-circle" id="mouse1"></li>
+          <li class="mouseLight mouseLight2 mouseFlash rounded-circle" id="mouse2"></li>
+          <li class="mouseLight mouseLight3 mouseFlash rounded-circle" id="mouse3"></li>
+          <li class="mouseLight mouseLight4 mouseFlash rounded-circle" id="mouse4"></li>
         </ul>
-        <ul class="m-0">
-          <li class="pointLight pointLight-out timing-15 rounded-circle me-4" id="ponitLight35">35</li>
-          <li class="pointLight pointLight-out timing-15 rounded-circle me-4" id="ponitLight40">40</li>
-          <li class="pointLight pointLight-out timing-15 rounded-circle me-4" id="ponitLight45">45</li>
-          <li class="pointLight pointLight-out timing-15 rounded-circle me-4" id="ponitLight50">50</li>
-        </ul>
-        <ul class="m-0">
-          <li class="pointLight pointLight-out timing-15 rounded-circle me-4" id="ponitLight55">55</li>
-          <li class="pointLight pointLight-out timing-15 rounded-circle me-4" id="ponitLight60">60</li>
-          <li class="pointLight pointLight-out timing-15 rounded-circle me-4" id="ponitLight65">65</li>
-          <li class="pointLight pointLight-out timing-15 rounded-circle me-4" id="ponitLight70">70</li>
-        </ul>
-        <ul class="m-0">
-          <li class="pointLight pointLight-out timing-0 rounded-circle me-4" id="ponitLight75">75</li>
-          <li class="pointLight pointLight-out timing-0 rounded-circle me-4" id="ponitLight80">80</li>
-          <li class="pointLight pointLight-out timing-0 rounded-circle me-4" id="ponitLight85">85</li>
-          <li class="pointLight pointLight-out timing-0 rounded-circle me-4" id="ponitLight90">90</li>
-        </ul>
+
+        <div class="d-flex pointLight-container p-0">
+          <ul class="pointLight-wrap1 pe-1">
+            <li class="pointLight pointLight15 timing-0 rounded-circle" id="pointLight15">15</li>
+            <li class="pointLight pointLight20 timing-0 rounded-circle" id="pointLight20">20</li>
+            <li class="pointLight pointLight25 timing-0 rounded-circle" id="pointLight25">25</li>
+            <li class="pointLight pointLight30 timing-0 rounded-circle" id="pointLight30">30</li>
+          </ul>
+          <ul class="pointLight-wrap2">
+            <li class="pointLight pointLight35 timing-15 rounded-circle" id="pointLight35">35</li>
+            <li class="pointLight pointLight40 timing-15 rounded-circle" id="pointLight40">40</li>
+            <li class="pointLight pointLight45 timing-15 rounded-circle" id="pointLight45">45</li>
+            <li class="pointLight pointLight50 timing-15 rounded-circle" id="pointLight50">50</li>
+          </ul>
+          <ul class="pointLight-wrap3">
+            <li class="pointLight pointLight55 timing-15 rounded-circle" id="pointLight55">55</li>
+            <li class="pointLight pointLight60 timing-15 rounded-circle" id="pointLight60">60</li>
+            <li class="pointLight pointLight65 timing-15 rounded-circle" id="pointLight65">65</li>
+            <li class="pointLight pointLight70 timing-15 rounded-circle" id="pointLight70">70</li>
+          </ul>
+          <ul class="pointLight-wrap4">
+            <li class="pointLight pointLight75 timing-0 rounded-circle" id="pointLight75">75</li>
+            <li class="pointLight pointLight80 timing-0 rounded-circle" id="pointLight80">80</li>
+            <li class="pointLight pointLight85 timing-0 rounded-circle" id="pointLight85">85</li>
+            <li class="pointLight pointLight90 timing-0 rounded-circle" id="pointLight90">90</li>
+          </ul>
+        </div>
+
       </div>
 
-      <ul>
-        <li><label for="name">彩票數</label><input type="number" id="name" name="name" required min="1" max="20"
-            size="20" /></li>
-        <li><label for="name">球數</label><input type="number" id="name" name="name" required min="1" max="100"
-            size="20" /></li>
-        <li><label for="point">分數</label><input type="number" id="point" name="name" required min="1" max="100"
-            size="20" /></li>
-        <li><label for="name">局數</label><input type="number" id="name" name="name" required min="1" max="100"
-            size="20" /></li>
-      </ul>
 
     </div>
 
-
+    <ul>
+      <li><label for="name">彩票數</label><input type="number" id="name" name="name" required min="1" max="20" size="20" />
+      </li>
+      <li><label for="ballNumber">球數</label><input type="number" id="ballNumber" name="nameballNumber" required min="1"
+          max="100" size="20" /></li>
+      <li><label for="point">分數</label><input type="number" id="point" name="point" required min="1" max="100"
+          size="20" /></li>
+      <li><label for="gameNumber">局數</label><input type="number" id="gameNumber" name="gameNumber" required min="1"
+          max="100" size="20" /></li>
+    </ul>
 
 
 
@@ -79,19 +78,19 @@
         const lights = document.querySelectorAll('.pointLight');
         // 逐個處理每個點燈元素
         lights.forEach((light, index) => {
-          // 設定 pointLight-out1 的延遲時間
-          const delay1 = index * 0; // 每個元素延遲 400 毫秒，可以根據需要調整
-          // const delay1 = index * 400; //這裡會有隨機閃燈的效果
+          const randomDelay = Math.floor(Math.random() * (1000 - 400 + 1)) + 400;
 
+          // 設定 pointLight-out1 的延遲時間
+          // const delay1 = index * 0; // 每個元素延遲 400 毫秒，可以根據需要調整
+          const delay1 = randomDelay; //****這裡會有隨機閃燈的效果,但要解決延遲播放問題****
 
           setTimeout(() => {
             light.classList.add('pointLight-out1'); // 添加 pointLight-out1 class
           }, delay1);
 
           // 設定 pointLight-out2 的延遲時間，延遲 5000 毫秒再執行
-          const randomDelay = Math.floor(Math.random() * (1000 - 400 + 1)) + 400;
 
-          const delay2 = 5000 + randomDelay; // pointLight-out2延遲5000毫秒再執行
+          const delay2 = 5000; // pointLight-out2延遲5000毫秒再執行
 
           setTimeout(() => {
             light.classList.add('pointLight-out2'); // 添加 pointLight-out2 class
@@ -104,16 +103,36 @@
 
         pointAmount.addEventListener(('change'), function () {
           console.log(pointAmount.value);
-          if (Number(pointAmount.value) !== 0) {
-           
-            lights.forEach(function(item){
+          // 分數不是0也不是五的倍數
+          if (Number(pointAmount.value) !== 0 && Number(pointAmount.value) % 5 !== 0) {
+
+            lights.forEach(function (item) {
+              item.classList.remove('firstGetpoint', 'pointLight-out1', 'pointLight-out2', 'highlight'); //加這一行，讓顯示特並分數後，其他動畫不會繼續跑出來
               item.classList.add('firstGetpoint');
-            })    
-            
+            })
+
+          } else if (Number(pointAmount.value) % 5 === 0) {
+
+            //當分數為板子所標示的分數時，亮燈顯示該分數
+            const getPointId = document.getElementById(`pointLight${Number(pointAmount.value)}`);
+            //這裡加上清除所有動畫樣式
+            lights.forEach(function (item) {
+              item.classList.remove('firstGetpoint', 'pointLight-out1', 'pointLight-out2', 'highlight');
+            });
+
+            getPointId.classList.add('highlight');
+
           }
         });
 
-        //當分數為板子所標示的分數時，亮燈顯示該分數
+        //當分數為板子所標示的分數時，亮燈顯示該分數，以及和局數的關係
+
+
+
+
+        //球數:幾球一局?
+
+
       </script>
 </body>
 
