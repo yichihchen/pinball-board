@@ -5,7 +5,7 @@
 .board {
   width: 640px;
   height: 800px;
-  background-image: url(/assets/images/彈珠檯-板子圓圈挖空.png);
+  background-image: url(/assets/images/彈珠檯-該挖空都挖了.png);
   position: relative; //長寬固定，點點位置不會偏移
 
   @include picture() {}
@@ -13,7 +13,7 @@
 
 .mouseLight-wrap {
   position: absolute; //推到board中間
-  top: 40%;
+  top: 39%;
   left: 26%;
 }
 
@@ -59,8 +59,8 @@
 
 .pointLight-container {
   position: absolute; //推到board中間
-  top: 56.5%;
-  left: 26.5%;
+  top: 55.4%;
+  left: 26.6%;
 
 }
 
@@ -333,6 +333,20 @@ $opacitys: (
 .nothighlight{
   background-color:rgb(59, 59, 59);
 }
+
+
+//資訊牆樣式
+.ticket{
+  position: absolute;
+  top:80%;
+  left:50%;
+}
+
+//更改input樣式
+#ticket{
+  background:transparent;
+}
+
 
 
 //開始 & 拉桿
