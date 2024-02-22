@@ -268,7 +268,7 @@ $opacitys: (
       }
 
       80% {
-        background: radial-gradient(circle, darken(rgba(255, 223, 97, $opacity), 40%), darken(rgba(255, 122, 45, $opacity), 90%));// background-color: darken(#ff7a2da9, $opacity); //rgba(255, 122, 45, $opacity);
+        background: radial-gradient(circle, darken(rgba(255, 223, 97, $opacity), 40%), darken(rgba(255, 122, 45, $opacity), 90%)); // background-color: darken(#ff7a2da9, $opacity); //rgba(255, 122, 45, $opacity);
       }
     }
 
@@ -330,22 +330,72 @@ $opacitys: (
   background: radial-gradient(circle, #ffdf61, #ff7a2d);
 }
 
-.nothighlight{
-  background-color:rgb(59, 59, 59);
+.nothighlight {
+  background-color: rgb(59, 59, 59);
 }
 
 
 //資訊牆樣式
-.ticket{
-  position: absolute;
-  top:80%;
-  left:50%;
-}
 
 //更改input樣式
-#ticket{
-  background:transparent;
+#ticket {
+  background: transparent;
+  width: 100px;
+  height: 42px;
+  position: absolute;
+  top: 78.6%;
+  left: 55.2%;
+  font-family: Orbitron, sans-serif;
+  font-size: 24px;
+  color:#e92469;
+  background-color:#410102;
+  text-align: right; /* 將文字置右 */
 }
+
+#ballNumber {
+  background: transparent;
+  width: 50px;
+  height: 38px;
+  position: absolute;
+  top: 76.5%;
+  left: 46.2%;
+  font-family: Orbitron, sans-serif;
+  font-size: 24px;
+  color:#e92469;
+  background-color:#410102;
+  text-align: right; /* 將文字置右 */
+}
+
+#gameNumber {
+  background: transparent;
+  width: 102px;
+  height: 42px;
+  position: absolute;
+  top: 78.5%;
+  left:29.2%;
+  font-family: Orbitron, sans-serif;
+  font-size: 24px;
+  color:#e92469;
+  background-color:#410102;
+  text-align: right; /* 將文字置右 */
+}
+
+#point {
+  background: transparent;
+  width: 84px;
+  height: 38px;
+  position: absolute;
+  top: 84.2%;
+  left:43.5%;
+  font-family: Orbitron, sans-serif;
+  font-size: 24px;
+  color:#e92469;
+  background-color:#410102;
+  text-align: right; /* 將文字置右 */
+}
+
+
+
 
 
 
