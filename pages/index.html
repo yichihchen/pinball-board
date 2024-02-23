@@ -96,31 +96,47 @@
         </div>
 
         <!-- 資訊牆 -->
-        <div class="ticket"><label for="ticket"></label><input type="number" id="ticket" name="ticket" required
-            min="1" max="20" size="20" />
+        <div class="ticket"><label for="ticket"></label><input type="number" id="ticket" name="ticket" required min="1"
+            max="20" size="20" />
         </div>
         <div class="ballNumber"><label for="ballNumber"></label><input type="number" id="ballNumber"
             name="nameballNumber" required min="1" max="100" size="20" /></div>
         <div class="point"><label for="point"></label><input type="number" id="point" name="point" required min="1"
             max="100" size="20" /></div>
-        <div class="gameNumber"><label for="gameNumber"></label><input type="number" id="gameNumber"
-            name="gameNumber" required min="1" max="100" size="20" /></div>
+        <div class="gameNumber"><label for="gameNumber"></label><input type="number" id="gameNumber" name="gameNumber"
+            required min="1" max="100" size="20" /></div>
         <!-- 資訊牆 end -->
+
+
 
       </div>
 
 
     </div>
-
-
-
-
-
-    <div class="drag-module">
-      <div class="start">開始</div>
-      <div class="drag"><span style="font-size:2rem; color: red"><i class="fa-solid fa-circle-dot"></i></span></div>
+    <!-- 開機鈕 -->
+    <div class="boot-module">
+      <div class="boot">開機</div>
+      <div class="boot-button"><a href="javascript:void(0)" id="pressBoot"><span
+            style="font-size:2rem; color: rgba(25, 163, 255, 0.747)"><i class="fa-solid fa-power-off"></i></span></a>
+      </div>
     </div>
 
+    <!-- 開始鈕 -->
+    <div class="drag-module">
+      <div class="start">開始</div>
+      <div class="start-button"><a href="javascript:void(0)" id="pressStart"><span style="font-size:2rem; color: red"><i
+              class="fa-solid fa-circle-dot"></i></span></a></div>
+    </div>
+
+    <!-- audio -->
+
+    <!-- 連續播放 -->
+    <audio controls src="../assets/audio/鼠來鼠趣開機音樂1-完整一小段.mp3" id="bootMusic1_1"></audio>
+
+    <audio controls src="../assets/audio/鼠來鼠趣開機音樂1-完整一小段(不含前面).mp3" id="bootMusic1_2"></audio>
+
+    <audio controls src="../assets/audio/鼠來鼠趣開機音樂1-完整一小段(不含前面).mp3" id="bootMusic1_3"></audio>
+    <!-- audio end -->
 
     <%- include('./layout/footer'); -%>
 
@@ -195,6 +211,51 @@
 
 
         //球數:幾球一局?
+
+
+        //音樂
+
+        //按開機鈕自動播放
+        const pressBoot = document.getElementById('pressBoot');
+        const countdownElement = document.getElementById('ballNumber');  //球數那欄顯示倒數秒數
+
+        pressBoot.addEventListener('click', function () {
+          let countdown = 3;
+
+          const countdownInterval = setInterval(function () {
+            //將倒數加到球數的input內
+            countdownElement.value = countdown;
+            countdown--;
+
+            if (countdown < 0) {
+              clearInterval(countdownInterval);
+              countdownElement.value = ''; // 隱藏倒數元素
+              document.getElementById('bootMusic1_1').play(); // 播放音樂(有開頭)
+
+
+              // 播放音樂(不含開頭)
+              document.getElementById('bootMusic1_1').onended = function () {
+                document.getElementById('bootMusic1_2').play();
+
+              };
+              //bootMusic1_2再播放一次
+              document.getElementById('bootMusic1_2').onended = function () {
+                document.getElementById('bootMusic1_3').play();  //等同於不含開頭播放兩次
+                
+
+              };
+
+
+            }
+          }, 1000); // 每秒更新一次倒數
+
+          // setTimeout(()=>{
+          //   document.getElementById('bootMusic1_1').play(); //自動撥放
+          // },3000);  //延遲3秒後播放
+
+
+        })
+
 
 
       </script>
