@@ -119,7 +119,7 @@
     </div>
     <!-- 開機鈕 -->
     <div class="boot-module">
-      <div class="boot">開機</div>
+      <p>開機</p>
       <div class="boot-button"><a href="javascript:void(0)" id="pressBoot"><span
             style="font-size:2rem; color: rgba(25, 163, 255, 0.747)"><i class="fa-solid fa-power-off"></i></span></a>
       </div>
@@ -127,13 +127,23 @@
 
     <!-- 開始鈕 -->
     <div class="drag-module">
-      <div class="start">開始</div>
+      <p>開始</p>
       <div class="start-button"><a href="javascript:void(0)" id="pressStart"><span style="font-size:2rem; color: red"><i
               class="fa-solid fa-circle-dot"></i></span></a></div>
     </div>
 
-    <!-- audio -->
+    <!-- 投幣 -->
+    <div class="coint">
+      <p>投幣次數(請投十元硬幣)</p>
+      <p id="cointAmount">5</p>
+      <div class="coint-button"><a href="javascript:void(0)" id="pressBoot"><span
+            style="font-size:2rem; color: rgb(224, 165, 0)"><i class="fa-solid fa-coins"></i></span></a>
 
+      </div>
+    </div>
+
+
+    <!-- audio -->
     <audio controls src="../assets/audio/鼠來鼠趣開機音樂1-完整一小段.mp3" id="bootMusic1_1" style="display:block;"></audio>
     <audio controls src="../assets/audio/鼠來鼠趣開機音樂1-完整一小段(不含前面).mp3" id="bootMusic1_2" style="display:block;"></audio>
     <audio controls src="../assets/audio/鼠來鼠趣開機音樂1-完整一小段(不含前面).mp3" id="bootMusic1_3" style="display:block;"></audio>
@@ -146,14 +156,15 @@
     <audio controls src="../assets/audio/鼠來鼠趣開機音樂3-完整一小段.mp3" id="bootMusic3_1" style="display:block;"></audio>
     <audio controls src="../assets/audio/鼠來鼠趣開機音樂3-完整一小段(不含前面).mp3" id="bootMusic3_2" style="display:block;"></audio>
     <audio controls src="../assets/audio/鼠來鼠趣開機音樂3-完整一小段(不含前面).mp3" id="bootMusic3_3" style="display:block;"></audio>
-
-
     <!-- audio end -->
 
     <!-- 計算開機次數 -->
     <div class="" id="bootNumber"></div>
-
     <!-- 計算開機次數 ends-->
+
+
+
+
     <footer class="footer">我是 footer</footer>
       
       <script>
@@ -220,12 +231,7 @@
           }
         });
 
-        //當分數為板子所標示的分數時，亮燈顯示該分數，以及和局數的關係
-
-
-        //球數:幾球一局?
-
-
+        
         //音樂
 
         //按開機鈕自動播放
@@ -307,6 +313,16 @@
           }
 
         }
+
+        //每投一次硬幣，有5球(要讓後台知道有5顆球要辨識)
+
+
+        //當Python辨識，5顆球都在面板上時，完成計分，每計一次分數，就少一局
+
+        
+    
+
+
 
 
       </script>
