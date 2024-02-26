@@ -100,14 +100,14 @@
         </div>
 
         <!-- 資訊牆 -->
-        <div class="ticket"><label for="ticket"></label><input type="number" id="ticket" name="ticket" required min="1"
+        <div class="gameNumber"><label for="gameNumber"></label><input type="number" id="gameNumber" name="gameNumber" required min="1"
             max="20" size="20" />
         </div>
         <div class="ballNumber"><label for="ballNumber"></label><input type="number" id="ballNumber"
             name="nameballNumber" required min="1" max="100" size="20" /></div>
         <div class="point"><label for="point"></label><input type="number" id="point" name="point" required min="1"
             max="100" size="20" /></div>
-        <div class="gameNumber"><label for="gameNumber"></label><input type="number" id="gameNumber" name="gameNumber"
+        <div class="ticket"><label for="ticket"></label><input type="number" id="ticket" name="ticket"
             required min="1" max="100" size="20" /></div>
         <!-- 資訊牆 end -->
 
@@ -134,9 +134,9 @@
 
     <!-- 投幣 -->
     <div class="coint">
-      <p>投幣次數(請投十元硬幣)</p>
-      <p id="cointAmount">5</p>
-      <div class="coint-button"><a href="javascript:void(0)" id="pressBoot"><span
+      <p>投幣次數(請投十元硬幣，點擊一次即為投幣一次)</p>
+      <p id="cointAmount">0</p>
+      <div class="coint-button"><a href="javascript:void(0)" id="pressCoint"><span
             style="font-size:2rem; color: rgb(224, 165, 0)"><i class="fa-solid fa-coins"></i></span></a>
 
       </div>
@@ -144,9 +144,9 @@
 
 
     <!-- audio -->
-    <audio controls src="../assets/audio/鼠來鼠趣開機音樂1-完整一小段.mp3" id="bootMusic1_1" style="display:block;"></audio>
-    <audio controls src="../assets/audio/鼠來鼠趣開機音樂1-完整一小段(不含前面).mp3" id="bootMusic1_2" style="display:block;"></audio>
-    <audio controls src="../assets/audio/鼠來鼠趣開機音樂1-完整一小段(不含前面).mp3" id="bootMusic1_3" style="display:block;"></audio>
+    <audio controls src="../assets/audio/鼠來鼠趣開機音樂1-完整一小段.mp3" id="bootMusic1_1" style="display:block;" controls></audio>
+    <audio controls src="../assets/audio/鼠來鼠趣開機音樂1-完整一小段(不含前面).mp3" id="bootMusic1_2" style="display:block;" controls></audio>
+    <audio controls src="../assets/audio/鼠來鼠趣開機音樂1-完整一小段(不含前面).mp3" id="bootMusic1_3" style="display:block;" controls></audio>
 
 
     <audio controls src="../assets/audio/鼠來鼠趣開機音樂2-完整一小段.mp3" id="bootMusic2_1" style="display:block;"></audio>
@@ -226,14 +226,11 @@
 
             });
 
-
-
           }
         });
 
-        
-        //音樂
 
+        //音樂
         //按開機鈕自動播放
         const pressBoot = document.getElementById('pressBoot');
         const countdownElement = document.getElementById('ballNumber');  //球數那欄顯示倒數秒數
@@ -314,13 +311,24 @@
 
         }
 
-        //每投一次硬幣，有5球(要讓後台知道有5顆球要辨識)
+        //每投一次硬幣(每點擊一次)，有5球(要讓後台知道有5顆球要辨識)
+        const pressCoint = document.getElementById('pressCoint');
+        const cointAmount = document.getElementById('cointAmount');
+        const ticket = document.getElementById('ticket');
+
+        let cointCount = 0;
+        pressCoint.addEventListener('click', function () {
+          cointCount++;
+          cointAmount.textContent = cointCount; //增加投幣次數
+          ticket.value = cointCount; //增加投幣次數
+        })
+
 
 
         //當Python辨識，5顆球都在面板上時，完成計分，每計一次分數，就少一局
 
-        
-    
+
+
 
 
 
