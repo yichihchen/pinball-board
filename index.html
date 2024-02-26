@@ -144,6 +144,7 @@
 
 
     <!-- audio -->
+    <!-- 開機音樂 -->
     <audio controls src="../assets/audio/鼠來鼠趣開機音樂1-完整一小段.mp3" id="bootMusic1_1" style="display:block;" controls></audio>
     <audio controls src="../assets/audio/鼠來鼠趣開機音樂1-完整一小段(不含前面).mp3" id="bootMusic1_2" style="display:block;"
       controls></audio>
@@ -158,6 +159,10 @@
     <audio controls src="../assets/audio/鼠來鼠趣開機音樂3-完整一小段.mp3" id="bootMusic3_1" style="display:block;"></audio>
     <audio controls src="../assets/audio/鼠來鼠趣開機音樂3-完整一小段(不含前面).mp3" id="bootMusic3_2" style="display:block;"></audio>
     <audio controls src="../assets/audio/鼠來鼠趣開機音樂3-完整一小段(不含前面).mp3" id="bootMusic3_3" style="display:block;"></audio>
+
+    <!-- 投幣音樂 -->
+    <audio controls src="../assets/audio/投幣音樂.mp3" id="cointMusic" style="display:block;" controls></audio>
+
     <!-- audio end -->
 
     <!-- 計算開機次數 -->
@@ -238,63 +243,80 @@
         const countdownElement = document.getElementById('ballNumber');  //球數那欄顯示倒數秒數
         let bootNumber = 0;  //計算開機次數
 
-        //手機切換音樂
         pressBoot.addEventListener('click', function () {
+          //倒數
           let countdown = 3;
 
           const countdownInterval = setInterval(function () {
+            //將倒數加到球數的input內
             countdownElement.value = countdown;
             countdown--;
 
             if (countdown < 0) {
               clearInterval(countdownInterval);
-              countdownElement.value = '';
+              countdownElement.value = ''; // 隱藏倒數元素
 
-              playWhichMusic();
+              playWhichMusic();  //插入playWhichMusic功能
+
             }
-          }, 1000);
-        });
+          }, 1000); // 每秒更新一次倒數
 
+
+        })
+
+
+        //執行bootMusic1或2或3的功能
         function playWhichMusic() {
           if (bootNumber % 3 === 1) {
-            bootNumber++;
+            bootNumber++;  //這裡移動到此，每首歌可以正常輪序
 
-            // 這裡使用 Promise 的方式確保在互動後自動播放音樂
-            const playPromise = document.getElementById('bootMusic1_1').play();
+            document.getElementById('bootMusic1_1').play(); // 播放音樂1(有開頭)
 
-            if (playPromise !== undefined) {
-              playPromise.then(_ => {
-                // 音樂已經成功播放
-                document.getElementById('bootMusic1_2').play();
-              }).catch(error => {
-                // 自動播放被阻擋，需要用戶互動
-                console.error('自動播放被阻擋，需要用戶互動');
-              });
-            }
+            // 播放音樂(不含開頭)
+            document.getElementById('bootMusic1_1').onended = function () {
+              document.getElementById('bootMusic1_2').play();
+            };
+
+            //bootMusic1_2再播放一次
+            document.getElementById('bootMusic1_2').onended = function () {
+              document.getElementById('bootMusic1_3').play();  //等同於不含開頭音樂播放兩次
+              //播完音樂後開機次數加上一次，蓋掉最前面的bootNumber變數
+              document.getElementById('bootNumber').textContent = bootNumber;  //顯示開機次數
+            };
+
           } else if (bootNumber % 3 === 2) {
-            const playPromise = document.getElementById('bootMusic2_1').play();
+            document.getElementById('bootMusic2_1').play(); // 播放音樂1(有開頭)
 
-            if (playPromise !== undefined) {
-              playPromise.then(_ => {
-                document.getElementById('bootMusic2_2').play();
-              }).catch(error => {
-                console.error('自動播放被阻擋，需要用戶互動');
-              });
-            }
+            // 播放音樂(不含開頭)
+            document.getElementById('bootMusic2_1').onended = function () {
+              document.getElementById('bootMusic2_2').play();
+            };
+
+            //bootMusic1_2再播放一次
+            document.getElementById('bootMusic2_2').onended = function () {
+              document.getElementById('bootMusic2_3').play();  //等同於不含開頭音樂播放兩次
+              //播完音樂後開機次數加上一次，蓋掉最前面的bootNumber變數
+              bootNumber++;
+              document.getElementById('bootNumber').textContent = bootNumber;  //顯示開機次數
+            };
           } else if (bootNumber % 3 === 0) {
-            const playPromise = document.getElementById('bootMusic3_1').play();
+            document.getElementById('bootMusic3_1').play(); // 播放音樂1(有開頭)
 
-            if (playPromise !== undefined) {
-              playPromise.then(_ => {
-                document.getElementById('bootMusic3_2').play();
-              }).catch(error => {
-                console.error('自動播放被阻擋，需要用戶互動');
-              });
-            }
+            // 播放音樂(不含開頭)
+            document.getElementById('bootMusic3_1').onended = function () {
+              document.getElementById('bootMusic3_2').play();
+            };
+
+            //bootMusic1_2再播放一次
+            document.getElementById('bootMusic3_2').onended = function () {
+              document.getElementById('bootMusic3_3').play();  //等同於不含開頭音樂播放兩次
+              //播完音樂後開機次數加上一次，蓋掉最前面的bootNumber變數
+              bootNumber++;
+              document.getElementById('bootNumber').textContent = bootNumber;  //顯示開機次數
+            };
           }
+
         }
-
-
 
 
 
@@ -302,23 +324,25 @@
         const pressCoint = document.getElementById('pressCoint');
         const cointAmount = document.getElementById('cointAmount');
         const ticket = document.getElementById('ticket');
+        const cointMusic = document.getElementById('cointMusic');
 
         let cointCount = 0;
         pressCoint.addEventListener('click', function () {
+          cointMusic.play();  //播放投幣音樂一次
           cointCount++;
           cointAmount.textContent = cointCount; //增加投幣次數
           ticket.value = cointCount; //增加投幣次數
         })
 
 
-
         //當Python辨識，5顆球都在面板上時，完成計分，每計一次分數，就少一局
 
 
+        //點擊開始遊戲，音樂和閃爍換成別種播放樣式
+        const pressStart = document.getElementById('pressStart');
+        
 
-
-
-
+        //拉桿模組
 
       </script>
 </body>
