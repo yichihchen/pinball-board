@@ -100,15 +100,15 @@
         </div>
 
         <!-- 資訊牆 -->
-        <div class="gameNumber"><label for="gameNumber"></label><input type="number" id="gameNumber" name="gameNumber" required min="1"
-            max="20" size="20" />
+        <div class="gameNumber"><label for="gameNumber"></label><input type="number" id="gameNumber" name="gameNumber"
+            required min="1" max="20" size="20" />
         </div>
         <div class="ballNumber"><label for="ballNumber"></label><input type="number" id="ballNumber"
             name="nameballNumber" required min="1" max="100" size="20" /></div>
         <div class="point"><label for="point"></label><input type="number" id="point" name="point" required min="1"
             max="100" size="20" /></div>
-        <div class="ticket"><label for="ticket"></label><input type="number" id="ticket" name="ticket"
-            required min="1" max="100" size="20" /></div>
+        <div class="ticket"><label for="ticket"></label><input type="number" id="ticket" name="ticket" required min="1"
+            max="100" size="20" /></div>
         <!-- 資訊牆 end -->
 
 
@@ -145,8 +145,10 @@
 
     <!-- audio -->
     <audio controls src="../assets/audio/鼠來鼠趣開機音樂1-完整一小段.mp3" id="bootMusic1_1" style="display:block;" controls></audio>
-    <audio controls src="../assets/audio/鼠來鼠趣開機音樂1-完整一小段(不含前面).mp3" id="bootMusic1_2" style="display:block;" controls></audio>
-    <audio controls src="../assets/audio/鼠來鼠趣開機音樂1-完整一小段(不含前面).mp3" id="bootMusic1_3" style="display:block;" controls></audio>
+    <audio controls src="../assets/audio/鼠來鼠趣開機音樂1-完整一小段(不含前面).mp3" id="bootMusic1_2" style="display:block;"
+      controls></audio>
+    <audio controls src="../assets/audio/鼠來鼠趣開機音樂1-完整一小段(不含前面).mp3" id="bootMusic1_3" style="display:block;"
+      controls></audio>
 
 
     <audio controls src="../assets/audio/鼠來鼠趣開機音樂2-完整一小段.mp3" id="bootMusic2_1" style="display:block;"></audio>
@@ -236,80 +238,65 @@
         const countdownElement = document.getElementById('ballNumber');  //球數那欄顯示倒數秒數
         let bootNumber = 0;  //計算開機次數
 
+        //手機切換音樂
         pressBoot.addEventListener('click', function () {
-          //倒數
           let countdown = 3;
 
           const countdownInterval = setInterval(function () {
-            //將倒數加到球數的input內
             countdownElement.value = countdown;
             countdown--;
 
             if (countdown < 0) {
               clearInterval(countdownInterval);
-              countdownElement.value = ''; // 隱藏倒數元素
+              countdownElement.value = '';
 
-              playWhichMusic();  //插入playWhichMusic功能
-
+              playWhichMusic();
             }
-          }, 1000); // 每秒更新一次倒數
+          }, 1000);
+        });
 
-
-        })
-
-
-        //執行bootMusic1或2或3的功能
         function playWhichMusic() {
           if (bootNumber % 3 === 1) {
-            bootNumber++;  //這裡移動到此，每首歌可以正常輪序
+            bootNumber++;
 
-            document.getElementById('bootMusic1_1').play(); // 播放音樂1(有開頭)
+            // 這裡使用 Promise 的方式確保在互動後自動播放音樂
+            const playPromise = document.getElementById('bootMusic1_1').play();
 
-            // 播放音樂(不含開頭)
-            document.getElementById('bootMusic1_1').onended = function () {
-              document.getElementById('bootMusic1_2').play();
-            };
-
-            //bootMusic1_2再播放一次
-            document.getElementById('bootMusic1_2').onended = function () {
-              document.getElementById('bootMusic1_3').play();  //等同於不含開頭音樂播放兩次
-              //播完音樂後開機次數加上一次，蓋掉最前面的bootNumber變數
-              document.getElementById('bootNumber').textContent = bootNumber;  //顯示開機次數
-            };
-
+            if (playPromise !== undefined) {
+              playPromise.then(_ => {
+                // 音樂已經成功播放
+                document.getElementById('bootMusic1_2').play();
+              }).catch(error => {
+                // 自動播放被阻擋，需要用戶互動
+                console.error('自動播放被阻擋，需要用戶互動');
+              });
+            }
           } else if (bootNumber % 3 === 2) {
-            document.getElementById('bootMusic2_1').play(); // 播放音樂1(有開頭)
+            const playPromise = document.getElementById('bootMusic2_1').play();
 
-            // 播放音樂(不含開頭)
-            document.getElementById('bootMusic2_1').onended = function () {
-              document.getElementById('bootMusic2_2').play();
-            };
-
-            //bootMusic1_2再播放一次
-            document.getElementById('bootMusic2_2').onended = function () {
-              document.getElementById('bootMusic2_3').play();  //等同於不含開頭音樂播放兩次
-              //播完音樂後開機次數加上一次，蓋掉最前面的bootNumber變數
-              bootNumber++;
-              document.getElementById('bootNumber').textContent = bootNumber;  //顯示開機次數
-            };
+            if (playPromise !== undefined) {
+              playPromise.then(_ => {
+                document.getElementById('bootMusic2_2').play();
+              }).catch(error => {
+                console.error('自動播放被阻擋，需要用戶互動');
+              });
+            }
           } else if (bootNumber % 3 === 0) {
-            document.getElementById('bootMusic3_1').play(); // 播放音樂1(有開頭)
+            const playPromise = document.getElementById('bootMusic3_1').play();
 
-            // 播放音樂(不含開頭)
-            document.getElementById('bootMusic3_1').onended = function () {
-              document.getElementById('bootMusic3_2').play();
-            };
-
-            //bootMusic1_2再播放一次
-            document.getElementById('bootMusic3_2').onended = function () {
-              document.getElementById('bootMusic3_3').play();  //等同於不含開頭音樂播放兩次
-              //播完音樂後開機次數加上一次，蓋掉最前面的bootNumber變數
-              bootNumber++;
-              document.getElementById('bootNumber').textContent = bootNumber;  //顯示開機次數
-            };
+            if (playPromise !== undefined) {
+              playPromise.then(_ => {
+                document.getElementById('bootMusic3_2').play();
+              }).catch(error => {
+                console.error('自動播放被阻擋，需要用戶互動');
+              });
+            }
           }
-
         }
+
+
+
+
 
         //每投一次硬幣(每點擊一次)，有5球(要讓後台知道有5顆球要辨識)
         const pressCoint = document.getElementById('pressCoint');
