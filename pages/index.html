@@ -474,7 +474,15 @@
 
         })
         //手機震動
-        window.navigator.vibrate(200);
+        // 檢查是否支援 Vibration API
+        if ("vibrate" in navigator) {
+          // 手機點擊時震動 200 毫秒
+          document.body.addEventListener("click", function () {
+            navigator.vibrate(200);
+          });
+        } else {
+          console.log("您的設備不支援震動功能。");
+        }
 
       </script>
 </body>
