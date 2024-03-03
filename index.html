@@ -473,16 +473,16 @@
           clearInterval(countdownInterval);
 
         })
-        //手機震動
+
+
+        //拉桿-手機震動
         // 檢查是否支援 Vibration API
-        if ("vibrate" in navigator) {
-          // 手機點擊時震動 200 毫秒
-          document.body.addEventListener("click", function () {
-            navigator.vibrate(200);
+       
+          // 手機點擊時震動 400 毫秒
+          bar.addEventListener("click", function () {
+            navigator.vibrate(400);
           });
-        } else {
-          console.log("您的設備不支援震動功能。");
-        }
+        
 
       </script>
 </body>
