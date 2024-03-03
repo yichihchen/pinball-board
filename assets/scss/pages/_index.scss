@@ -68,6 +68,7 @@
   width: 30px;
   height: 30px;
   font-size: 10px; //分數字體大小
+  background: radial-gradient(circle, darken(rgba(255, 223, 97), 40%), darken(rgba(255, 122, 45), 90%)); //背景
 
 }
 
@@ -160,6 +161,7 @@
 }
 
 
+
 //mouseFlash閃爍
 $mouse-opacitys: (
   mouseFlash:100%,
@@ -194,7 +196,6 @@ $mouse-opacitys: (
 
 
 //pointLight 第一組閃爍
-//記得結尾要加分號，不然一直出現錯誤
 //另外不可用fill，fill是用在SVG上的
 $opacitys: (
   pointLight-out1:100%,
@@ -207,7 +208,7 @@ $opacitys: (
 
     // 這裡不要加背景顏色，以免擋到閃爍效果
     @keyframes #{$name}-flash {
-      // 20% {
+      // 10% {
       //   background-color: rgba(255, 122, 45, $opacity); //把顏色的透明度調整成0%，黑色不見就變成透明了!??  //darken(#ff7a2d00, $opacity)
       // }
 
@@ -232,7 +233,7 @@ $opacitys: (
       }
     }
 
-    animation: 1s #{$name}-flash 20;
+    animation: 1s #{$name}-flash 10;
 
   }
 
@@ -256,7 +257,6 @@ $opacitys: (
   pointLight-out2:100%,
   //100%完全不透明
   // pointLight-in:100%
-  pointLight-out2-opacity:0%,
 );
 
 @each $name, $opacity in $opacitys {
@@ -273,7 +273,7 @@ $opacitys: (
     }
 
     // 使用第二組 keyframes，動畫執行 40 次才停止
-    animation: 1s #{$name}-flash-2 60;
+    animation: 1s #{$name}-flash-2 infinite;
   }
 
 }
@@ -324,6 +324,8 @@ $opacitys: (
   }
 }
 
+
+
 //得幾分亮起指定分數按鈕
 .highlight {
   // background-color: #ff7a2d;
@@ -333,6 +335,57 @@ $opacitys: (
 .nothighlight {
   background-color: rgb(59, 59, 59);
 }
+
+//點擊開始燈號樣式,用timing比較好用
+//要改成: 依序全部亮，再依序全部暗
+.startlight {
+  background: radial-gradient(circle, #ffdf61, #ff7a2d);
+}
+
+$opacitys: (
+  startlight:100%,
+  //100%完全不透明
+
+);
+
+
+@each $name, $opacity in $opacitys {
+  .#{$name} {
+    @keyframes #{$name}-flash-3 {
+      50% {
+        background: radial-gradient(circle, darken(rgba(255, 223, 97, $opacity), 90%), darken(rgba(255, 122, 45, $opacity), 40%));
+      }
+
+
+    }
+
+    animation: 1s #{$name}-flash-3 0.5;
+  }
+}
+
+//startlight控制閃爍延遲
+$timings: (
+  start-0: 0s,
+  start-15: .15s,
+  start-20: .20s,
+  start-25: .25s,
+  start-30: .3s,
+  start-35: .35s,
+  start-40: .4s,
+  start-45: .45s,
+  start-50: .5s,
+  start-55: .55s,
+  start-60: .6s,
+  start-65: .65s,
+  start-70: .7s,
+);
+
+@each $timing-name, $timing in $timings {
+  .#{$timing-name} {
+    animation-delay: $timing;
+  }
+}
+
 
 
 //資訊牆樣式
@@ -347,9 +400,10 @@ $opacitys: (
   left: 55.2%;
   font-family: Orbitron, sans-serif;
   font-size: 24px;
-  color:#e92469;
-  background-color:#410102;
-  text-align: right; /* 將文字置右 */
+  color: #e92469;
+  background-color: #410102;
+  text-align: right;
+  /* 將文字置右 */
 }
 
 #ballNumber {
@@ -360,10 +414,11 @@ $opacitys: (
   top: 76.5%;
   left: 46.2%;
   font-family: Orbitron, sans-serif;
-  font-size: 24px;
-  color:#e92469;
-  background-color:#410102;
-  text-align: right; /* 將文字置右 */
+  font-size: 16px;
+  color: #e92469;
+  background-color: #410102;
+  text-align: right;
+  /* 將文字置右 */
 }
 
 #gameNumber {
@@ -372,12 +427,13 @@ $opacitys: (
   height: 42px;
   position: absolute;
   top: 78.5%;
-  left:29.2%;
+  left: 29.2%;
   font-family: Orbitron, sans-serif;
   font-size: 24px;
-  color:#e92469;
-  background-color:#410102;
-  text-align: right; /* 將文字置右 */
+  color: #e92469;
+  background-color: #410102;
+  text-align: right;
+  /* 將文字置右 */
 }
 
 #point {
@@ -386,12 +442,13 @@ $opacitys: (
   height: 38px;
   position: absolute;
   top: 84.2%;
-  left:43.5%;
+  left: 43.5%;
   font-family: Orbitron, sans-serif;
   font-size: 24px;
-  color:#e92469;
-  background-color:#410102;
-  text-align: right; /* 將文字置右 */
+  color: #e92469;
+  background-color: #410102;
+  text-align: right;
+  /* 將文字置右 */
 }
 
 
@@ -399,4 +456,57 @@ $opacitys: (
 
 
 
-//開始 & 拉桿
+//下方操作 
+.handle {
+  width: 640px;
+  height: 156px;
+  background-image: url(/assets/images/拉桿模組.png);
+
+  @include picture() {}
+}
+
+.start {
+  position: absolute;
+  top: 76px;
+  left: 156px;
+}
+
+.coin {
+  position: absolute;
+  top: 150px;
+  left: 450px;
+}
+
+
+
+//拉桿
+.bar {
+  width: 40px;
+  position: absolute;
+  top: 106px;
+  left: 560px;
+  
+ 
+ 
+}
+
+#barImgLong{
+  position:relative;
+  top:50px;
+  left:0px;
+  visibility:hidden;
+}
+
+#barImgShort{
+  position:absolute;
+  top:50px;
+  left:0px;
+}
+// .pull {
+//   position: absolute;
+//   top: 150px;
+//   left: 560px;
+  
+
+ 
+// }
