@@ -39,6 +39,9 @@
       <!-- board -->
       <div class="board text-center">
 
+        <!-- 上方閃光 -->
+        <div class="bluelight" id="blueLight"></div>
+
         <!-- light flashing -->
 
         <ul class="d-flex mouseLight-wrap justify-content-center align-items-center m-0">
@@ -387,8 +390,11 @@
 
         //當Python辨識，5顆球都在面板上時，完成計分，每計一次分數，就少一局
 
+        //藍色閃爍
+        const blueLight = document.getElementById('blueLight');
 
 
+        
 
         //點擊開始遊戲，音樂和閃爍換成別種播放樣式
         const pressStart = document.getElementById('pressStart');
@@ -452,7 +458,7 @@
 
 
 
-        //關機
+        //關機(待改正)
         const pressShutdown = document.getElementById('pressShutdown');
         pressShutdown.addEventListener('click', function () {
           // 暫停或清除音樂播放器
@@ -471,6 +477,17 @@
 
           // 清除計時器
           clearInterval(countdownInterval);
+
+          // 重置倒數元素
+          countdownElement.value = '';
+
+          // 清除點燈動畫效果
+          lights.forEach(function (item) {
+
+            item.classList.remove('firstGetpoint', 'pointLight-out1', 'pointLight-out2', 'highlight', 'startlight', 'darken', 'nothighlight', 'mouseFlash');
+            item.style.animation = 'none';
+            void item.offsetWidth; // 強制重新繪製，使上面的樣式生效
+          });
 
         })
 

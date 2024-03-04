@@ -11,6 +11,33 @@
   @include picture() {}
 }
 
+//上方藍色閃光
+.bluelight {
+  width: 300px;
+  height: 30px;
+  position: absolute;
+  top: 0%;
+  left: 26%;
+  border-radius: 50%;
+  background-color: rgba(33, 110, 255, 0.8);
+  box-shadow: 0 0 10px #247bff, 0 0 20px #247bff, 0 0 20px #247bff inset;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 .mouseLight-wrap {
   position: absolute; //推到board中間
   top: 39%;
@@ -485,28 +512,29 @@ $timings: (
   position: absolute;
   top: 106px;
   left: 560px;
-  
- 
- 
+
+
+
 }
 
-#barImgLong{
-  position:relative;
-  top:50px;
-  left:0px;
-  visibility:hidden;
+#barImgLong {
+  position: relative;
+  top: 50px;
+  left: 0px;
+  visibility: hidden;
 }
 
-#barImgShort{
-  position:absolute;
-  top:50px;
-  left:0px;
+#barImgShort {
+  position: absolute;
+  top: 50px;
+  left: 0px;
 }
+
 // .pull {
 //   position: absolute;
 //   top: 150px;
 //   left: 560px;
-  
 
- 
+
+
 // }
