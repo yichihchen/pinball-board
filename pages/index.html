@@ -18,23 +18,7 @@
 <body>
   <%- include('./layout/header'); -%>
     <div class="container p-0">
-      <h1 class="index-title text-center">鼠來數趣3</h1>
 
-      <!-- 開機鈕 -->
-      <div class="boot-module">
-        <p>開機</p>
-        <div class="boot-button"><a href="javascript:void(0)" id="pressBoot"><span
-              style="font-size:2rem; color: rgba(18, 211, 1, 0.662)"><i class="fa-solid fa-power-off"></i></span></a>
-        </div>
-      </div>
-
-      <!-- 關機鍵 -->
-      <div class="shutdown-module">
-        <p>關機</p>
-        <div class="shutdown-button"><a href="javascript:void(0)" id="pressShutdown"><span
-              style="font-size:2rem; color: rgba(0, 129, 215, 0.747)"><i class="fa-solid fa-power-off"></i></span></a>
-        </div>
-      </div>
 
       <!-- board -->
       <div class="board p-0">
@@ -139,13 +123,13 @@
         <!-- 開始鈕 -->
         <div class="start">
           <div class="start-button"><a href="javascript:void(0)" id="pressStart"><span
-                style="font-size:2rem; color: rgb(0, 81, 255)"><i class="fa-solid fa-circle-dot"></i></span></a></div>
+                style="font-size:1rem; color: rgb(0, 81, 255)"><i class="fa-solid fa-circle-dot"></i></span></a></div>
         </div>
 
         <div class="coin">
 
           <div class="coin-button"><a href="javascript:void(0)" id="pressCoin"><span
-                style="font-size:2rem; color: rgb(224, 165, 0)"><i class="fa-solid fa-coins"></i></span></a>
+                style="font-size:1rem; color: rgb(224, 165, 0)"><i class="fa-solid fa-coins"></i></span></a>
             <p>請投十元硬幣</p>
           </div><span id="coinAmount">0</span>
         </div>
@@ -160,7 +144,21 @@
     </div>
 
 
+    <!-- 開機鈕 -->
+    <div class="boot-module">
+      <p>開機</p>
+      <div class="boot-button"><a href="javascript:void(0)" id="pressBoot"><span
+            style="font-size:2rem; color: rgba(18, 211, 1, 0.662)"><i class="fa-solid fa-power-off"></i></span></a>
+      </div>
+    </div>
 
+    <!-- 關機鍵 -->
+    <div class="shutdown-module">
+      <p>關機</p>
+      <div class="shutdown-button"><a href="javascript:void(0)" id="pressShutdown"><span
+            style="font-size:2rem; color: rgba(0, 129, 215, 0.747)"><i class="fa-solid fa-power-off"></i></span></a>
+      </div>
+    </div>
 
 
     <!-- audio -->
