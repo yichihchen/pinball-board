@@ -13,8 +13,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
 
   <title>index</title>
-  <script type="module" crossorigin src="/pinball-board/assets/main-aea49e89.js"></script>
-  <link rel="stylesheet" href="/pinball-board/assets/main-4d0f6488.css">
+  <script type="module" crossorigin src="/pinball-board/assets/main-3b107100.js"></script>
+  <link rel="stylesheet" href="/pinball-board/assets/main-3ce3abb2.css">
 </head>
 
 <body>
@@ -39,6 +39,9 @@
 
       <!-- board -->
       <div class="board text-center">
+
+        <!-- 上方閃光 -->
+        <div class="bluelight" id="blueLight"></div>
 
         <!-- light flashing -->
 
@@ -125,366 +128,386 @@
         <!-- 資訊牆 end -->
       </div>
 
-      <!-- 娃娃機下半部 -->
-      <div class="handle position-relative">
-        <!-- 開始鈕 -->
-        <div class="start">
-          <div class="start-button"><a href="javascript:void(0)" id="pressStart"><span
-                style="font-size:2rem; color: rgb(0, 81, 255)"><i class="fa-solid fa-circle-dot"></i></span></a></div>
+      <!-- 娃娃機中間 -->
+      <div class="row">
+        <div class="col-8">
+          <img src="http://192.168.1.59:8081/0/stream" width="300" height="200" />
         </div>
 
-        <div class="coin">
+        <!-- 娃娃機下半部 -->
+        <div class="handle position-relative">
+          <!-- 開始鈕 -->
+          <div class="start">
+            <div class="start-button"><a href="javascript:void(0)" id="pressStart"><span
+                  style="font-size:2rem; color: rgb(0, 81, 255)"><i class="fa-solid fa-circle-dot"></i></span></a></div>
+          </div>
 
-          <div class="coin-button"><a href="javascript:void(0)" id="pressCoin"><span
-                style="font-size:2rem; color: rgb(224, 165, 0)"><i class="fa-solid fa-coins"></i></span></a>
-            <p>請投十元硬幣</p>
-          </div><span id="coinAmount">0</span>
+          <div class="coin">
+
+            <div class="coin-button"><a href="javascript:void(0)" id="pressCoin"><span
+                  style="font-size:2rem; color: rgb(224, 165, 0)"><i class="fa-solid fa-coins"></i></span></a>
+              <p>請投十元硬幣</p>
+            </div><span id="coinAmount">0</span>
+          </div>
+
+          <a href="javascript:void(0)" id="bar">
+            <div class="bar" id="barControl"><img src="/pinball-board/assets/把手-長-4ba8f537.svg" alt="把手" id="barImgLong"><img
+                src="/pinball-board/assets/把手-短-447b12b9.svg" alt="短把手" id="barImgShort"></div>
+          </a>
         </div>
+        <!-- 娃娃機下半部 end-->
 
-        <a href="javascript:void(0)" id="bar">
-          <div class="bar" id="barControl"><img src="/pinball-board/assets/把手-長-4ba8f537.svg" alt="把手" id="barImgLong"><img
-              src="/pinball-board/assets/把手-短-447b12b9.svg" alt="短把手" id="barImgShort"></div>
-        </a>
       </div>
-      <!-- 娃娃機下半部 end-->
-
-    </div>
 
 
 
 
 
-    <!-- audio -->
-    <!-- 開機音樂 -->
-    <audio controls src="../assets/audio/鼠來鼠趣開機音樂1-完整一小段.mp3" id="bootMusic1_1" style="display:block;"></audio>
-    <audio controls src="../assets/audio/鼠來鼠趣開機音樂1-完整一小段(不含前面).mp3" id="bootMusic1_2" style="display:block;"></audio>
-    <audio controls src="../assets/audio/鼠來鼠趣開機音樂1-完整一小段(不含前面).mp3" id="bootMusic1_3" style="display:block;"></audio>
+      <!-- audio -->
+      <!-- 開機音樂 -->
+      <audio controls src="../assets/audio/鼠來鼠趣開機音樂1-完整一小段.mp3" id="bootMusic1_1" style="display:block;"></audio>
+      <audio controls src="../assets/audio/鼠來鼠趣開機音樂1-完整一小段(不含前面).mp3" id="bootMusic1_2" style="display:block;"></audio>
+      <audio controls src="../assets/audio/鼠來鼠趣開機音樂1-完整一小段(不含前面).mp3" id="bootMusic1_3" style="display:block;"></audio>
 
 
-    <audio controls src="../assets/audio/鼠來鼠趣開機音樂2-完整一小段.mp3" id="bootMusic2_1" style="display:block;"></audio>
-    <audio controls src="../assets/audio/鼠來鼠趣開機音樂2-完整一小段(不含前面).mp3" id="bootMusic2_2" style="display:block;"></audio>
-    <audio controls src="../assets/audio/鼠來鼠趣開機音樂2-完整一小段(不含前面).mp3" id="bootMusic2_3" style="display:block;"></audio>
+      <audio controls src="../assets/audio/鼠來鼠趣開機音樂2-完整一小段.mp3" id="bootMusic2_1" style="display:block;"></audio>
+      <audio controls src="../assets/audio/鼠來鼠趣開機音樂2-完整一小段(不含前面).mp3" id="bootMusic2_2" style="display:block;"></audio>
+      <audio controls src="../assets/audio/鼠來鼠趣開機音樂2-完整一小段(不含前面).mp3" id="bootMusic2_3" style="display:block;"></audio>
 
-    <audio controls src="../assets/audio/鼠來鼠趣開機音樂3-完整一小段.mp3" id="bootMusic3_1" style="display:block;"></audio>
-    <audio controls src="../assets/audio/鼠來鼠趣開機音樂3-完整一小段(不含前面).mp3" id="bootMusic3_2" style="display:block;"></audio>
-    <audio controls src="../assets/audio/鼠來鼠趣開機音樂3-完整一小段(不含前面).mp3" id="bootMusic3_3" style="display:block;"></audio>
+      <audio controls src="../assets/audio/鼠來鼠趣開機音樂3-完整一小段.mp3" id="bootMusic3_1" style="display:block;"></audio>
+      <audio controls src="../assets/audio/鼠來鼠趣開機音樂3-完整一小段(不含前面).mp3" id="bootMusic3_2" style="display:block;"></audio>
+      <audio controls src="../assets/audio/鼠來鼠趣開機音樂3-完整一小段(不含前面).mp3" id="bootMusic3_3" style="display:block;"></audio>
 
-    <!-- 投幣音樂 -->
-    <audio controls src="../assets/audio/投幣音樂.mp3" id="cointMusic" style="display:block;"></audio>
+      <!-- 投幣音樂 -->
+      <audio controls src="../assets/audio/投幣音樂.mp3" id="cointMusic" style="display:block;"></audio>
 
-    <!-- 開始音樂 -->
-    <audio controls src="../assets/audio/開始音樂.mp3" id="startMusic" style="display:block;"></audio>
+      <!-- 開始音樂 -->
+      <audio controls src="../assets/audio/開始音樂.mp3" id="startMusic" style="display:block;"></audio>
 
-    <!-- 得分音樂1 -->
-    <audio controls src="../assets/audio/得分音樂1.mp3" id="playMusic1" style="display:block;"></audio>
+      <!-- 得分音樂1 -->
+      <audio controls src="../assets/audio/得分音樂1.mp3" id="playMusic1" style="display:block;"></audio>
 
-    <!-- 得分音樂2 -->
-    <audio controls src="../assets/audio/得分音樂2.mp3" id="playMusic2" style="display:block;"></audio>
+      <!-- 得分音樂2 -->
+      <audio controls src="../assets/audio/得分音樂2.mp3" id="playMusic2" style="display:block;"></audio>
 
-    <!-- audio end -->
+      <!-- audio end -->
 
-    <!-- 計算開機次數 -->
-    <div class="" id="bootNumber"></div>
-    <!-- 計算開機次數 ends-->
-
-
+      <!-- 計算開機次數 -->
+      <div class="" id="bootNumber"></div>
+      <!-- 計算開機次數 ends-->
 
 
-    
+
+
       
-      <script>
-        // 獲取所有點燈的元素
-        const lights = document.querySelectorAll('.pointLight');
+        
+        <script>
+          // 獲取所有點燈的元素
+          const lights = document.querySelectorAll('.pointLight');
 
-        //在每一局的第一次得分就閃一次
-        const pointAmount = document.getElementById('point');
+          //在每一局的第一次得分就閃一次
+          const pointAmount = document.getElementById('point');
 
-        //開機音樂
-        const bootMusic1_1 = document.getElementById('bootMusic1_1');
-        const bootMusic1_2 = document.getElementById('bootMusic1_2');
-        const bootMusic1_3 = document.getElementById('bootMusic1_3');
-        const bootMusic2_1 = document.getElementById('bootMusic2_1');
-        const bootMusic2_2 = document.getElementById('bootMusic2_2');
-        const bootMusic2_3 = document.getElementById('bootMusic2_3');
-        const bootMusic3_1 = document.getElementById('bootMusic3_1');
-        const bootMusic3_2 = document.getElementById('bootMusic3_2');
-        const bootMusic3_3 = document.getElementById('bootMusic3_3');
+          //開機音樂
+          const bootMusic1_1 = document.getElementById('bootMusic1_1');
+          const bootMusic1_2 = document.getElementById('bootMusic1_2');
+          const bootMusic1_3 = document.getElementById('bootMusic1_3');
+          const bootMusic2_1 = document.getElementById('bootMusic2_1');
+          const bootMusic2_2 = document.getElementById('bootMusic2_2');
+          const bootMusic2_3 = document.getElementById('bootMusic2_3');
+          const bootMusic3_1 = document.getElementById('bootMusic3_1');
+          const bootMusic3_2 = document.getElementById('bootMusic3_2');
+          const bootMusic3_3 = document.getElementById('bootMusic3_3');
 
-        //打彈珠背景音樂
-        const playMusic1 = document.getElementById('playMusic1');
-        const playMusic2 = document.getElementById('playMusic2');
-
-
-
-        function lightStartFlash() {
-          // 逐個處理每個點燈元素
-          lights.forEach((light, index) => {
-            const randomDelay = Math.floor(Math.random() * (1000 - 400 + 1)) + 400;
-
-            // 設定 pointLight-out1 的延遲時間
-            // const delay1 = index * 0; // 每個元素延遲 400 毫秒，可以根據需要調整
-            const delay1 = randomDelay; //****這裡會有隨機閃燈的效果,但要解決延遲播放問題****
-
-            setTimeout(() => {
-              light.classList.add('pointLight-out1'); // 添加 pointLight-out1 class
-            }, delay1);
-
-            // 設定 pointLight-out2 的延遲時間，延遲 5000 毫秒再執行
-
-            const delay2 = 5000; // pointLight-out2延遲5000毫秒再執行
-
-            setTimeout(() => {
-              light.classList.add('pointLight-out2'); // 添加 pointLight-out2 class
-            }, delay2);
-          });
-        }
-
-        lightStartFlash();
+          //打彈珠背景音樂
+          const playMusic1 = document.getElementById('playMusic1');
+          const playMusic2 = document.getElementById('playMusic2');
 
 
 
+          function lightStartFlash() {
+            // 逐個處理每個點燈元素
+            lights.forEach((light, index) => {
+              const randomDelay = Math.floor(Math.random() * (1000 - 400 + 1)) + 400;
 
-        //當偵測到分數不等於0時，執行firstGetpoint，而且只執行一次
-        pointAmount.addEventListener(('change'), function () {
+              // 設定 pointLight-out1 的延遲時間
+              // const delay1 = index * 0; // 每個元素延遲 400 毫秒，可以根據需要調整
+              const delay1 = randomDelay; //****這裡會有隨機閃燈的效果,但要解決延遲播放問題****
 
-          // 分數不是0也不是五的倍數
-          //**不是0的時候也觸發**
-          if (Number(pointAmount.value) !== 0) {
+              setTimeout(() => {
+                light.classList.add('pointLight-out1'); // 添加 pointLight-out1 class
+              }, delay1);
 
-            lights.forEach(function (item) {
-              item.classList.remove('firstGetpoint', 'pointLight-out1', 'pointLight-out2', 'highlight'); //加這一行，讓顯示特並分數後，其他動畫不會繼續跑出來
-              item.classList.add('firstGetpoint');
-            })
+              // 設定 pointLight-out2 的延遲時間，延遲 5000 毫秒再執行
 
-          } else if (Number(pointAmount.value) % 5 === 0) {
+              const delay2 = 5000; // pointLight-out2延遲5000毫秒再執行
 
-            //當分數為板子所標示的分數時，亮燈顯示該分數
-            const getPointId = document.getElementById(`pointLight${Number(pointAmount.value)}`);
-            //這裡加上清除所有動畫樣式
-            lights.forEach(function (item) {
-              //將"不是"得分的分數反灰
-              if (item.id !== `pointLight${Number(pointAmount.value)}`) {
-                item.classList.remove('firstGetpoint', 'pointLight-out1', 'pointLight-out2', 'highlight', 'nothighlight');
-                item.classList.add('nothighlight');
-              } else {
-
-                item.classList.remove('firstGetpoint', 'pointLight-out1', 'pointLight-out2', 'highlight', 'nothighlight');
-                getPointId.classList.add('highlight');
-                console.log(item);
-
-              }
-
+              setTimeout(() => {
+                light.classList.add('pointLight-out2'); // 添加 pointLight-out2 class
+              }, delay2);
             });
-
           }
-        });
+
+          lightStartFlash();
 
 
 
-        //按開機鈕自動播放
-        const pressBoot = document.getElementById('pressBoot');
-        const countdownElement = document.getElementById('ballNumber');  //球數那欄顯示倒數秒數
-        let bootNumber = 0;  //計算開機次數
 
-        pressBoot.addEventListener('click', function () {
-          //倒數
-          let countdown = 3;
+          //當偵測到分數不等於0時，執行firstGetpoint，而且只執行一次
+          pointAmount.addEventListener(('change'), function () {
 
-          const countdownInterval = setInterval(function () {
-            //將倒數加到球數的input內
-            countdownElement.value = countdown;
-            countdown--;
+            // 分數不是0也不是五的倍數
+            //**不是0的時候也觸發**
+            if (Number(pointAmount.value) !== 0) {
 
-            if (countdown < 0) {
-              clearInterval(countdownInterval);
-              countdownElement.value = ''; // 隱藏倒數元素
+              lights.forEach(function (item) {
+                item.classList.remove('firstGetpoint', 'pointLight-out1', 'pointLight-out2', 'highlight'); //加這一行，讓顯示特並分數後，其他動畫不會繼續跑出來
+                item.classList.add('firstGetpoint');
+              })
 
-              playBootMusic();  //插入playBootMusic功能
+            } else if (Number(pointAmount.value) % 5 === 0) {
+
+              //當分數為板子所標示的分數時，亮燈顯示該分數
+              const getPointId = document.getElementById(`pointLight${Number(pointAmount.value)}`);
+              //這裡加上清除所有動畫樣式
+              lights.forEach(function (item) {
+                //將"不是"得分的分數反灰
+                if (item.id !== `pointLight${Number(pointAmount.value)}`) {
+                  item.classList.remove('firstGetpoint', 'pointLight-out1', 'pointLight-out2', 'highlight', 'nothighlight');
+                  item.classList.add('nothighlight');
+                } else {
+
+                  item.classList.remove('firstGetpoint', 'pointLight-out1', 'pointLight-out2', 'highlight', 'nothighlight');
+                  getPointId.classList.add('highlight');
+                  console.log(item);
+
+                }
+
+              });
 
             }
-          }, 1000); // 每秒更新一次倒數
-
-
-        })
-
-
-        //執行bootMusic1或2或3的功能
-        function playBootMusic() {
-
-          if (bootNumber % 3 === 1) {
-            bootNumber++;  //這裡移動到此，每首歌可以正常輪序
-
-            bootMusic1_1.play(); // 播放音樂1(有開頭)
-
-            // 播放音樂(不含開頭)
-            bootMusic1_1.onended = function () {
-              bootMusic1_2.play();
-            };
-
-            //bootMusic1_2再播放一次
-            bootMusic1_2.onended = function () {
-              bootMusic1_3.play();  //等同於不含開頭音樂播放兩次
-              //播完音樂後開機次數加上一次，蓋掉最前面的bootNumber變數
-              document.getElementById('bootNumber').textContent = bootNumber;  //顯示開機次數
-            };
-
-          } else if (bootNumber % 3 === 2) {
-            bootMusic2_1.play(); // 播放音樂1(有開頭)
-
-            // 播放音樂(不含開頭)
-            bootMusic2_1.onended = function () {
-              bootMusic2_2.play();
-            };
-
-            //bootMusic1_2再播放一次
-            bootMusic2_2.onended = function () {
-              bootMusic2_3.play();  //等同於不含開頭音樂播放兩次
-              //播完音樂後開機次數加上一次，蓋掉最前面的bootNumber變數
-              bootNumber++;
-              document.getElementById('bootNumber').textContent = bootNumber;  //顯示開機次數
-            };
-          } else if (bootNumber % 3 === 0) {
-            bootMusic3_1.play(); // 播放音樂1(有開頭)
-
-            // 播放音樂(不含開頭)
-            bootMusic3_1.onended = function () {
-              bootMusic3_2.play();
-            };
-
-            //bootMusic1_2再播放一次
-            bootMusic3_2.onended = function () {
-              bootMusic3_3.play();  //等同於不含開頭音樂播放兩次
-              //播完音樂後開機次數加上一次，蓋掉最前面的bootNumber變數
-              bootNumber++;
-              document.getElementById('bootNumber').textContent = bootNumber;  //顯示開機次數
-            };
-          }
-
-        }
+          });
 
 
 
-        //每投一次硬幣(每點擊一次)，有5球(要讓後台知道有5顆球要辨識)
-        const pressCoin = document.getElementById('pressCoin');
-        const coinAmount = document.getElementById('coinAmount');
-        const ticket = document.getElementById('ticket');
-        const cointMusic = document.getElementById('cointMusic');
-        const ballNumber = document.getElementById('ballNumber');
+          //按開機鈕自動播放
+          const pressBoot = document.getElementById('pressBoot');
+          const countdownElement = document.getElementById('ballNumber');  //球數那欄顯示倒數秒數
+          let bootNumber = 0;  //計算開機次數
 
-        let coinCount = 0;
-        pressCoin.addEventListener('click', function () {
-          cointMusic.play();  //播放投幣音樂
+          pressBoot.addEventListener('click', function () {
+            //倒數
+            let countdown = 3;
 
-          coinCount++;
-          ticket.value = coinCount; //增加投幣次數
-          ballNumber.value = coinCount * 5;  //球數隨著局數增加
-          coinAmount.textContent = coinCount;
-        })
+            const countdownInterval = setInterval(function () {
+              //將倒數加到球數的input內
+              countdownElement.value = countdown;
+              countdown--;
 
+              if (countdown < 0) {
+                clearInterval(countdownInterval);
+                countdownElement.value = ''; // 隱藏倒數元素
 
-        //****球數隨著局數減少*****辨識完後減少
+                playBootMusic();  //插入playBootMusic功能
 
-
-        //當Python辨識，5顆球都在面板上時，完成計分，每計一次分數，就少一局
-
-
+              }
+            }, 1000); // 每秒更新一次倒數
 
 
-        //點擊開始遊戲，音樂和閃爍換成別種播放樣式
-        const pressStart = document.getElementById('pressStart');
-        const startMusic = document.getElementById('startMusic');
-
-        pressStart.addEventListener('click', function () {
-          // 暫停和歸零 開機音樂 的效果
-          bootMusic1_1.pause();
-          bootMusic1_2.pause();
-          bootMusic1_3.pause();
-          bootMusic2_1.pause();
-          bootMusic2_2.pause();
-          bootMusic2_3.pause();
-          bootMusic3_1.pause();
-          bootMusic3_2.pause();
-          bootMusic3_3.pause();
-
-
-          startMusic.play();   //播放開始音樂
-
-          //開始13秒後，自動播放打彈珠時的背景音樂1
-          startMusic.onended = function () {
-            setTimeout(function () {
-              playMusic1.play();
-            }, 13000);
-          };
-
-          //打彈珠時的背景音樂2
-          playMusic1.onended = function () {
-            playMusic2.play();
-          }
-
-
-          // 點擊開始>閃爍燈號樣式
-          //先清除原有燈號樣式
-          lights.forEach(function (item) {
-            item.classList.remove('firstGetpoint', 'pointLight-out1', 'pointLight-out2', 'highlight', 'startlight'); //加這一行，其他動畫不會繼續跑出來
-            void item.offsetWidth;  //加上這一行強制重新整理，避免startlight沒移除
-            item.classList.add('startlight');
           })
 
-        })
+
+          //執行bootMusic1或2或3的功能
+          function playBootMusic() {
+
+            if (bootNumber % 3 === 1) {
+              bootNumber++;  //這裡移動到此，每首歌可以正常輪序
+
+              bootMusic1_1.play(); // 播放音樂1(有開頭)
+
+              // 播放音樂(不含開頭)
+              bootMusic1_1.onended = function () {
+                bootMusic1_2.play();
+              };
+
+              //bootMusic1_2再播放一次
+              bootMusic1_2.onended = function () {
+                bootMusic1_3.play();  //等同於不含開頭音樂播放兩次
+                //播完音樂後開機次數加上一次，蓋掉最前面的bootNumber變數
+                document.getElementById('bootNumber').textContent = bootNumber;  //顯示開機次數
+              };
+
+            } else if (bootNumber % 3 === 2) {
+              bootMusic2_1.play(); // 播放音樂1(有開頭)
+
+              // 播放音樂(不含開頭)
+              bootMusic2_1.onended = function () {
+                bootMusic2_2.play();
+              };
+
+              //bootMusic1_2再播放一次
+              bootMusic2_2.onended = function () {
+                bootMusic2_3.play();  //等同於不含開頭音樂播放兩次
+                //播完音樂後開機次數加上一次，蓋掉最前面的bootNumber變數
+                bootNumber++;
+                document.getElementById('bootNumber').textContent = bootNumber;  //顯示開機次數
+              };
+            } else if (bootNumber % 3 === 0) {
+              bootMusic3_1.play(); // 播放音樂1(有開頭)
+
+              // 播放音樂(不含開頭)
+              bootMusic3_1.onended = function () {
+                bootMusic3_2.play();
+              };
+
+              //bootMusic1_2再播放一次
+              bootMusic3_2.onended = function () {
+                bootMusic3_3.play();  //等同於不含開頭音樂播放兩次
+                //播完音樂後開機次數加上一次，蓋掉最前面的bootNumber變數
+                bootNumber++;
+                document.getElementById('bootNumber').textContent = bootNumber;  //顯示開機次數
+              };
+            }
+
+          }
 
 
-        //拉桿
-        // **但不知為何點兩下，才會有反應**        
-        const pullBar = document.getElementById('barControl');
-        const bar = document.getElementById('bar');  //a標籤
-        const barImgLong = document.getElementById('barImgLong');
-        const barImgShort = document.getElementById('barImgShort');
 
-        bar.addEventListener('click', function () {
-          barImgLong.style.visibility = 'visible';
-          setInterval(function () {
-            barImgLong.style.visibility = 'hidden';
-            barImgShort.style.visibility = 'visible';
-          }, 500);
-          barImgShort.style.visibility = 'hidden';
+          //每投一次硬幣(每點擊一次)，有5球(要讓後台知道有5顆球要辨識)
+          const pressCoin = document.getElementById('pressCoin');
+          const coinAmount = document.getElementById('coinAmount');
+          const ticket = document.getElementById('ticket');
+          const cointMusic = document.getElementById('cointMusic');
+          const ballNumber = document.getElementById('ballNumber');
 
-        })
+          let coinCount = 0;
+          pressCoin.addEventListener('click', function () {
+            cointMusic.play();  //播放投幣音樂
 
-
-
-        //關機
-        const pressShutdown = document.getElementById('pressShutdown');
-        pressShutdown.addEventListener('click', function () {
-          // 暫停或清除音樂播放器
-          bootMusic1_1.pause();
-          bootMusic1_2.pause();
-          bootMusic1_3.pause();
-          bootMusic2_1.pause();
-          bootMusic2_2.pause();
-          bootMusic2_3.pause();
-          bootMusic3_1.pause();
-          bootMusic3_2.pause();
-          bootMusic3_3.pause();
-          startMusic.pause();
-          playMusic1.pause();
-          playMusic2.pause();
-
-          // 清除計時器
-          clearInterval(countdownInterval);
-
-        })
+            coinCount++;
+            ticket.value = coinCount; //增加投幣次數
+            ballNumber.value = coinCount * 5;  //球數隨著局數增加
+            coinAmount.textContent = coinCount;
+          })
 
 
-        //拉桿-手機震動
-        // 檢查是否支援 Vibration API
-
-        // 手機點擊時震動 400 毫秒
-        bar.addEventListener("click", function () {
-          navigator.vibrate(400);
-        });
+          //****球數隨著局數減少*****辨識完後減少
 
 
-      </script>
+          //當Python辨識，5顆球都在面板上時，完成計分，每計一次分數，就少一局
+
+          //藍色閃爍
+          const blueLight = document.getElementById('blueLight');
+
+
+
+
+          //點擊開始遊戲，音樂和閃爍換成別種播放樣式
+          const pressStart = document.getElementById('pressStart');
+          const startMusic = document.getElementById('startMusic');
+
+          pressStart.addEventListener('click', function () {
+            // 暫停和歸零 開機音樂 的效果
+            bootMusic1_1.pause();
+            bootMusic1_2.pause();
+            bootMusic1_3.pause();
+            bootMusic2_1.pause();
+            bootMusic2_2.pause();
+            bootMusic2_3.pause();
+            bootMusic3_1.pause();
+            bootMusic3_2.pause();
+            bootMusic3_3.pause();
+
+
+            startMusic.play();   //播放開始音樂
+
+            //開始13秒後，自動播放打彈珠時的背景音樂1
+            startMusic.onended = function () {
+              setTimeout(function () {
+                playMusic1.play();
+              }, 13000);
+            };
+
+            //打彈珠時的背景音樂2
+            playMusic1.onended = function () {
+              playMusic2.play();
+            }
+
+
+            // 點擊開始>閃爍燈號樣式
+            //先清除原有燈號樣式
+            lights.forEach(function (item) {
+              item.classList.remove('firstGetpoint', 'pointLight-out1', 'pointLight-out2', 'highlight', 'startlight'); //加這一行，其他動畫不會繼續跑出來
+              void item.offsetWidth;  //加上這一行強制重新整理，避免startlight沒移除
+              item.classList.add('startlight');
+            })
+
+          })
+
+
+          //拉桿
+          // **但不知為何點兩下，才會有反應**        
+          const pullBar = document.getElementById('barControl');
+          const bar = document.getElementById('bar');  //a標籤
+          const barImgLong = document.getElementById('barImgLong');
+          const barImgShort = document.getElementById('barImgShort');
+
+          bar.addEventListener('click', function () {
+            barImgLong.style.visibility = 'visible';
+            setInterval(function () {
+              barImgLong.style.visibility = 'hidden';
+              barImgShort.style.visibility = 'visible';
+            }, 500);
+            barImgShort.style.visibility = 'hidden';
+
+          })
+
+
+
+          //關機(待改正)
+          const pressShutdown = document.getElementById('pressShutdown');
+          pressShutdown.addEventListener('click', function () {
+            // 暫停或清除音樂播放器
+            bootMusic1_1.pause();
+            bootMusic1_2.pause();
+            bootMusic1_3.pause();
+            bootMusic2_1.pause();
+            bootMusic2_2.pause();
+            bootMusic2_3.pause();
+            bootMusic3_1.pause();
+            bootMusic3_2.pause();
+            bootMusic3_3.pause();
+            startMusic.pause();
+            playMusic1.pause();
+            playMusic2.pause();
+
+            // 清除計時器
+            clearInterval(countdownInterval);
+
+            // 重置倒數元素
+            countdownElement.value = '';
+
+            // 清除點燈動畫效果
+            lights.forEach(function (item) {
+
+              item.classList.remove('firstGetpoint', 'pointLight-out1', 'pointLight-out2', 'highlight', 'startlight', 'darken', 'nothighlight', 'mouseFlash');
+              item.style.animation = 'none';
+              void item.offsetWidth; // 強制重新繪製，使上面的樣式生效
+            });
+
+          })
+
+
+          //拉桿-手機震動
+          // 檢查是否支援 Vibration API
+
+          // 手機點擊時震動 400 毫秒
+          bar.addEventListener("click", function () {
+            navigator.vibrate(400);
+          });
+
+
+        </script>
 </body>
 
 </html>
