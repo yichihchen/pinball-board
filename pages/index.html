@@ -441,15 +441,15 @@
         const barImgShort = document.getElementById('barImgShort');
 
         bar.addEventListener('click', function () {
-
-          if (barImgLong.style.visibility === 'hidden') {
-            barImgLong.style.visibility = 'visible';
-            barImgShort.style.visibility = 'hidden';
-          } else {
+          barImgLong.style.visibility = 'visible';
+          setInterval(function () {
             barImgLong.style.visibility = 'hidden';
             barImgShort.style.visibility = 'visible';
-          }
+          }, 500);
+          barImgShort.style.visibility = 'hidden';
+
         })
+
 
 
         //關機
@@ -477,12 +477,12 @@
 
         //拉桿-手機震動
         // 檢查是否支援 Vibration API
-       
-          // 手機點擊時震動 400 毫秒
-          bar.addEventListener("click", function () {
-            navigator.vibrate(400);
-          });
-        
+
+        // 手機點擊時震動 400 毫秒
+        bar.addEventListener("click", function () {
+          navigator.vibrate(400);
+        });
+
 
       </script>
 </body>
