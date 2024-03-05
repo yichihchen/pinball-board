@@ -49,3 +49,6 @@ export default defineConfig({
     outDir: 'dist',
   },
 });
+
+//自己加的jquery
+
