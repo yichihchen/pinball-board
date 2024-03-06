@@ -13,14 +13,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
 
   <title>index</title>
-  <script type="module" crossorigin src="/pinball-board/assets/main-01782396.js"></script>
-  <link rel="stylesheet" href="/pinball-board/assets/main-e407c812.css">
+  <script type="module" crossorigin src="/pinball-board/assets/index-8cc3e660.js"></script>
+  <link rel="stylesheet" href="/pinball-board/assets/index-6609b4ba.css">
 </head>
 
 <body>
       <div class="container p-0">
-
-
       <!-- board -->
       <div class="board p-0">
 
@@ -113,9 +111,9 @@
       </div>
 
       <!-- 娃娃機中間 -->
-      <div class="row">
-        <div class="text-center p-0">
-          <img src="http://192.168.1.59:8081/0/stream" width="300" height="200" />
+      <div class="row middle justify-content-center">
+        <div class="middle-frame text-center p-0 ">
+          <img class="middle-img" src="http://192.168.1.59:8081/0/stream" />
         </div>
       </div>
 
@@ -123,15 +121,18 @@
       <div class="handle position-relative p-0">
         <!-- 開始鈕 -->
         <div class="start">
-          <div class="start-button"><a href="javascript:void(0)" id="pressStart"><span
+          <!--原id為pressStart -->
+          <div class="start-button"><a href="javascript:void(0)" id="button_start_game"><span
                 style="font-size:1rem; color: rgb(0, 81, 255)"><i class="fa-solid fa-circle-dot"></i></span></a></div>
+
         </div>
 
         <div class="coin">
 
-          <div class="coin-button"><a href="javascript:void(0)" id="pressCoin"><span
+          <!-- 原本id為pressCoin -->
+          <div class="coin-button"><a href="javascript:void(0)" id="button_insert_coin"><span
                 style="font-size:1rem; color: rgb(224, 165, 0)"><i class="fa-solid fa-coins"></i></span></a>
-            <p>請投十元硬幣</p>
+            <p>Insert Coin</p>
           </div><span id="coinAmount">0</span>
         </div>
 
@@ -158,6 +159,16 @@
       <p>關機</p>
       <div class="shutdown-button"><a href="javascript:void(0)" id="pressShutdown"><span
             style="font-size:2rem; color: rgba(0, 129, 215, 0.747)"><i class="fa-solid fa-power-off"></i></span></a>
+      </div>
+    </div>
+
+    <!-- 計算分數 -->
+    <div class="row">
+      <div class="col-4">
+        <label>Detail:</label>
+      </div>
+      <div class="col-6">
+        <input type="text" class="form_control" id="result_detail">
       </div>
     </div>
 
@@ -195,12 +206,15 @@
     <div class="" id="bootNumber"></div>
     <!-- 計算開機次數 ends-->
 
-
+    
 
 
     
       
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
       <script>
+
+
         // 獲取所有點燈的元素
         const lights = document.querySelectorAll('.pointLight');
 
@@ -373,14 +387,14 @@
 
 
         //每投一次硬幣(每點擊一次)，有5球(要讓後台知道有5顆球要辨識)
-        const pressCoin = document.getElementById('pressCoin');
+        const buttonInsertCoin = document.getElementById('button_insert_coin');
         const coinAmount = document.getElementById('coinAmount');
         const ticket = document.getElementById('ticket');
         const cointMusic = document.getElementById('cointMusic');
         const ballNumber = document.getElementById('ballNumber');
 
         let coinCount = 0;
-        pressCoin.addEventListener('click', function () {
+        buttonInsertCoin.addEventListener('click', function () {
           cointMusic.play();  //播放投幣音樂
 
           coinCount++;
@@ -402,10 +416,10 @@
 
 
         //點擊開始遊戲，音樂和閃爍換成別種播放樣式
-        const pressStart = document.getElementById('pressStart');
+        const buttonStartGame = document.getElementById('button_start_game');
         const startMusic = document.getElementById('startMusic');
 
-        pressStart.addEventListener('click', function () {
+        buttonStartGame.addEventListener('click', function () {
           // 暫停和歸零 開機音樂 的效果
           bootMusic1_1.pause();
           bootMusic1_2.pause();
@@ -499,12 +513,79 @@
 
         //拉桿-手機震動
         // 檢查是否支援 Vibration API
-
         // 手機點擊時震動 400 毫秒
         bar.addEventListener("click", function () {
           navigator.vibrate(400);
         });
 
+
+        //音樂朗讀分數
+
+
+
+        //串接ajax功能
+        const BIZLUTION_RESTFUL_API_URL = "http://192.168.1.59:5000/"
+        $(document).ready(function () {
+
+          function insertCoin() {
+            $.ajax({
+              url: BIZLUTION_RESTFUL_API_URL + 'insert_coin',
+              async: false,
+              error: function (result) {
+              },
+              success: function (result) {
+
+              }
+            })
+          }
+
+
+          function startGame() {
+            $.ajax({
+              url: BIZLUTION_RESTFUL_API_URL + 'start_game',
+              async: false,
+              error: function (result) {
+              },
+              success: function (result) {
+
+              }
+            })
+          }
+
+          function getResult() {
+            $.ajax({
+              dataType: "json",
+              url: BIZLUTION_RESTFUL_API_URL + 'get_result',
+              async: true,
+              error: function (result) {
+              },
+              success: function (result) {
+                $('#result_score').val(result.data.score)
+                $('#result_ball').val(result.data.ball)
+                $('#result_detail').val(result.data.detail)
+              }
+            })
+          }
+
+          //網址http://192.168.1.59:5000/insert_coin 自動跳出功能並執行
+
+          $('#button_insert_coin').on('click', function (event) {
+            insertCoin()
+          })
+
+          $('#button_start_game').on('click', function (event) {
+            startGame()
+          })
+
+
+          function foo() {
+            getResult()
+            setTimeout(foo, 1000)
+          }
+          foo()
+
+
+        })
 
       </script>
 </body>
