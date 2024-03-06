@@ -110,9 +110,9 @@
       </div>
 
       <!-- 娃娃機中間 -->
-      <div class="row">
-        <div class="text-center p-0">
-          <img src="http://192.168.1.59:8081/0/stream" width="300" height="200" />
+      <div class="row middle justify-content-center">
+        <div class="middle-frame text-center p-0 ">
+          <img class="middle-img" src="http://192.168.1.59:8081/0/stream" />
         </div>
       </div>
 
@@ -161,6 +161,16 @@
       </div>
     </div>
 
+    <!-- 計算分數 -->
+    <div class="row">
+      <div class="col-4">
+        <label>Detail:</label>
+      </div>
+      <div class="col-6">
+        <input type="text" class="form_control" id="result_detail">
+      </div>
+    </div>
+
 
     <!-- audio -->
     <!-- 開機音樂 -->
@@ -195,7 +205,7 @@
     <div class="" id="bootNumber"></div>
     <!-- 計算開機次數 ends-->
 
-
+    
 
 
     <%- include('./layout/footer'); -%>
@@ -203,7 +213,7 @@
       <script type="module" src="../main.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
       <script>
-      
+
 
         // 獲取所有點燈的元素
         const lights = document.querySelectorAll('.pointLight');
@@ -503,15 +513,17 @@
 
         //拉桿-手機震動
         // 檢查是否支援 Vibration API
-
         // 手機點擊時震動 400 毫秒
         bar.addEventListener("click", function () {
           navigator.vibrate(400);
         });
 
 
-        //串接ajax功能
+        //音樂朗讀分數
 
+
+
+        //串接ajax功能
         const BIZLUTION_RESTFUL_API_URL = "http://192.168.1.59:5000/"
         $(document).ready(function () {
 

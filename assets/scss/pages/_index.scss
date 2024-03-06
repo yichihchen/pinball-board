@@ -4,7 +4,7 @@
 
 .board {
   width: 100%;
-  height:400px;
+  height: 400px;
   background-image: url(/assets/images/彈珠檯-反光修正.png);
   position: relative; //長寬固定，點點位置不會偏移
 
@@ -224,25 +224,6 @@ $opacitys: (
 
     // 這裡不要加背景顏色，以免擋到閃爍效果
     @keyframes #{$name}-flash {
-      // 10% {
-      //   background-color: rgba(255, 122, 45, $opacity); //把顏色的透明度調整成0%，黑色不見就變成透明了!??  //darken(#ff7a2d00, $opacity)
-      // }
-
-      // 10% {
-      //   background: radial-gradient(circle, darken(rgba(255, 223, 97, $opacity), 40%), darken(rgba(255, 122, 45, $opacity), 90%));  //darken(#ff7a2dce, $opacity)
-      // }
-
-      // 40% {
-      //   background-color: radial-gradient(circle, darken(rgba(255, 223, 97, $opacity), 40%), darken(rgba(255, 122, 45, $opacity), 90%));   // rgba(255, 122, 45, $opacity)
-      // }
-
-      // 60% {
-      //   background-color: radial-gradient(circle, darken(rgba(255, 223, 97, $opacity), 40%), darken(rgba(255, 122, 45, $opacity), 90%));   // rgba(255, 122, 45, $opacity)
-      // }
-
-      // 80% {
-      //   background:radial-gradient(circle, darken(rgba(255, 223, 97, $opacity), 40%), darken(rgba(255, 122, 45, $opacity), 90%));  // darken(#ff7a2dce, $opacity)
-      // }
 
       50% {
         background: radial-gradient(circle, darken(rgba(255, 223, 97, $opacity), 40%), darken(rgba(255, 122, 45, $opacity), 90%)); // darken(#ff7a2dce, $opacity)
@@ -308,8 +289,7 @@ $timings: (
 
 
 .firstGetpoint {
-  // background-color: #ff7a2d;
-  // background: linear-gradient(135deg, #ff7a2d, #ffcc00); 
+
   background: radial-gradient(circle, #ffdf61, #ff7a2d);
 }
 
@@ -328,8 +308,7 @@ $opacitys: (
     // 這裡不要加背景顏色，以免擋到閃爍效果
     @keyframes #{$name}-flash {
       40% {
-        // background-color: darken(#ff7a2d, $opacity);
-        // background: radial-gradient(circle, #ffdf61, #ff7a2d);
+
         background: radial-gradient(circle, darken(rgba(255, 223, 97, $opacity), 40%), darken(rgba(255, 122, 45, $opacity), 90%));
 
       }
@@ -344,7 +323,7 @@ $opacitys: (
 
 //得幾分亮起指定分數按鈕
 .highlight {
-  // background-color: #ff7a2d;
+
   background: radial-gradient(circle, #ffdf61, #ff7a2d);
 }
 
@@ -447,7 +426,7 @@ $timings: (
   top: 114px;
   left: 0px;
   font-family: Orbitron, sans-serif;
-  font-size:12px;
+  font-size: 12px;
   color: #e92469;
   background-color: #410102;
   text-align: right;
@@ -507,18 +486,15 @@ $timings: (
 
   //relative萬用置中(重要)
   transform: translate(-50%, -10%);
-  top:0%;
-  left:50%;
-  
+  top: 0%;
+  left: 50%;
+
   background-image: url(/assets/images/拉桿模組.png);
 
   @include picture() {}
 }
 
 .start {
-  // position: absolute;
-  // top: 76px;
-  // left: 156px;
   position: absolute;
   transform: translate(-50%, -50%);
   top: 60%;
@@ -554,4 +530,21 @@ $timings: (
   position: absolute;
   top: 50px;
   left: 0px;
+}
+
+
+//middle
+.middle-frame {
+  width: 260px !important;
+  height: 195px !important;
+  overflow: hidden;
+ 
+  img {
+    max-width: 130% !important;
+    position: relative;
+    transform: translate(-50%, -50%);
+    top:53%; 
+    left:50%;
+  }
+
 }
