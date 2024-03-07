@@ -17,9 +17,9 @@
 
 <body>
   <%- include('./layout/header'); -%>
-    <div class="container p-0">
+    
       <!-- board -->
-      <div class="board p-0">
+      <div class="board p-0 position-relative">
 
         <!-- 上方閃光 -->
         <div class="bluelight" id="blueLight"></div>
@@ -37,7 +37,7 @@
             id="mouse4">趣</li>
         </ul>
 
-        <div class="d-flex pointLight-container ">
+        <div class="d-flex pointLight-container">
           <ul class="pointLight-wrap1 m-0">
             <li
               class="pointLight pointLight15 timing-0 rounded-circle d-flex align-items-center justify-content-center fw-bold start-0"
@@ -108,41 +108,43 @@
             max="100" size="20" /></div>
         <!-- 資訊牆 end -->
       </div>
+   
 
-      <!-- 娃娃機中間 -->
-      <div class="row middle justify-content-center">
-        <div class="middle-frame text-center p-0 ">
-          <img class="middle-img" src="http://192.168.1.59:8081/0/stream" />
-        </div>
+    <!-- 娃娃機中間 -->
+    <div class="row middle justify-content-center m-0 position-relative">
+      <div class="middle-frame text-center p-0 ">
+        <img class="middle-img" src="http://192.168.1.59:8081/0/stream" />
       </div>
-
-      <!-- 娃娃機下半部 -->
-      <div class="handle position-relative p-0">
-        <!-- 開始鈕 -->
-        <div class="start">
-          <!--原id為pressStart -->
-          <div class="start-button"><a href="javascript:void(0)" id="button_start_game"><span
-                style="font-size:1rem; color: rgb(0, 81, 255)"><i class="fa-solid fa-circle-dot"></i></span></a></div>
-
-        </div>
-
-        <div class="coin">
-
-          <!-- 原本id為pressCoin -->
-          <div class="coin-button"><a href="javascript:void(0)" id="button_insert_coin"><span
-                style="font-size:1rem; color: rgb(224, 165, 0)"><i class="fa-solid fa-coins"></i></span></a>
-            <p>Insert Coin</p>
-          </div><span id="coinAmount">0</span>
-        </div>
-
-        <a href="javascript:void(0)" id="bar">
-          <div class="bar" id="barControl"><img src="../assets/images/把手-長.svg" alt="把手" id="barImgLong"><img
-              src="../assets/images/把手-短.svg" alt="短把手" id="barImgShort"></div>
-        </a>
+      <!--拉桿 -->
+      <a href="javascript:void(0)" id="bar" class="d-inline-block">
+        <div class="bar" id="barControl"><img src="../assets/images/把手-長.svg" alt="把手" id="barImgLong"><img
+            src="../assets/images/把手-短.svg" alt="短把手" id="barImgShort"></div>
+      </a>
+      <!-- 投幣按鈕 -->
+      <div class="coin">
+        <!-- 原本id為pressCoin -->
+        <div class="coin-button"><a href="javascript:void(0)" id="button_insert_coin"><span
+              style="font-size:6vw; color: rgb(255, 72, 0)"><i class="fa-solid fa-coins"></i></span></a>
+          <p>Insert Coin</p>
+        </div><span id="coinAmount">0</span>
       </div>
-      <!-- 娃娃機下半部 end-->
 
     </div>
+   
+    <!-- 娃娃機下半部 -->
+    <div class="handle position-relative p-0">
+      <!-- 開始鈕 -->
+      <div class="start">
+        <!--原id為pressStart -->
+        <div class="start-button"><a href="javascript:void(0)" id="button_start_game"><span
+              style="font-size:8vw; color: rgb(0, 81, 255)"><i class="fa-solid fa-circle-dot"></i></span></a></div>
+
+      </div>
+     
+    </div>
+    <!-- 娃娃機下半部 end-->
+
+
 
 
     <!-- 開機鈕 -->
@@ -205,7 +207,7 @@
     <div class="" id="bootNumber"></div>
     <!-- 計算開機次數 ends-->
 
-    
+
 
 
     <%- include('./layout/footer'); -%>
@@ -470,7 +472,7 @@
           setInterval(function () {
             barImgLong.style.visibility = 'hidden';
             barImgShort.style.visibility = 'visible';
-          }, 500);
+          }, 600);
           barImgShort.style.visibility = 'hidden';
 
         })
