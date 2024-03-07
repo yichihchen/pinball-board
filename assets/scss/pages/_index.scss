@@ -7,7 +7,7 @@
   min-height: calc(100vw * 1.3);  //100:130為背景圖的比例
   
   background-image: url(/assets/images/彈珠檯-反光修正.png);
-
+ 
   @include picture() {
     background-size: 100% 100%;   //背景的寬度為100% 原因是視窗依照其寬度做縮放，高度是隨著寬度而改變
     background-position: center 0%;   //背景的基準點為，父層容器x軸的中央(背景圖x軸置中，y軸從背景的頂部開始)
@@ -412,7 +412,7 @@ $timings: (
 
 
   font-family: Orbitron, sans-serif;
-  font-size: 12px;
+  font-size: 4vw;
   color: #e92469;
   background-color: #410102;
   text-align: right;
@@ -426,7 +426,7 @@ $timings: (
   left: 50%;
 }
 
-#ballNumber {
+#result_ball {
   background: transparent;
   width: 8vw;
   height: 7vw;
@@ -438,7 +438,7 @@ $timings: (
 
 
   font-family: Orbitron, sans-serif;
-  font-size: 12px;
+  font-size: 4vw;
   color: #e92469;
   background-color: #410102;
   text-align: right;
@@ -463,7 +463,7 @@ $timings: (
   left: 0vw;
 
   font-family: Orbitron, sans-serif;
-  font-size: 12px;
+  font-size: 4vw;
   color: #e92469;
   background-color: #410102;
   text-align: right;
@@ -489,7 +489,7 @@ $timings: (
   left: -13.5vw;
   
   font-family: Orbitron, sans-serif;
-  font-size: 12px;
+  font-size: 4vw;
   color: #e92469;
   background-color: #410102;
   text-align: right;
@@ -499,16 +499,9 @@ $timings: (
 
 //下方操作 
 .handle {
-  // width: 300px;
-  // height: 80px;
+
   width: 100vw;
   min-height: calc(100vw * 0.25);  //100:130為背景圖的比例
-
-  //relative萬用置中(重要)
-  // transform: translate(-50%, -10%);
-  // top: 0%;
-  // left: 50%;
-
   background-image: url(/assets/images/拉桿模組.png);
 
   @include picture() {
@@ -532,12 +525,15 @@ $timings: (
 
 //將拉桿至於娃娃機台右側
 .bar {
-  width: 8vw;
+  
   position: absolute;
-  transform: translate(0%, 0%);
-  top: 70%;
-  left: 90%;
+  top: 50vw;
+  left: 90vw;
+  img{
+    width: 8vw;
+  }
 }
+
 
 .coin {
   position: absolute;

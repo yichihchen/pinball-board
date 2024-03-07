@@ -17,107 +17,107 @@
 
 <body>
   <%- include('./layout/header'); -%>
-    
-      <!-- board -->
-      <div class="board p-0 position-relative">
 
-        <!-- 上方閃光 -->
-        <div class="bluelight" id="blueLight"></div>
+    <!-- board -->
+    <div class="board p-0 position-relative">
 
-        <!-- light flashing -->
+      <!-- 上方閃光 -->
+      <div class="bluelight" id="blueLight"></div>
 
-        <ul class="d-flex mouseLight-wrap justify-content-center align-items-center m-0 p-0">
-          <li class="mouseLight mouseLight1 mouseFlash rounded-circle d-flex align-items-center justify-content-center"
-            id="mouse1">鼠</li>
-          <li class="mouseLight mouseLight2 mouseFlash rounded-circle d-flex align-items-center justify-content-center"
-            id="mouse2">來</li>
-          <li class="mouseLight mouseLight3 mouseFlash rounded-circle d-flex align-items-center justify-content-center"
-            id="mouse3">數</li>
-          <li class="mouseLight mouseLight4 mouseFlash rounded-circle d-flex align-items-center justify-content-center"
-            id="mouse4">趣</li>
+      <!-- light flashing -->
+
+      <ul class="d-flex mouseLight-wrap justify-content-center align-items-center m-0 p-0">
+        <li class="mouseLight mouseLight1 mouseFlash rounded-circle d-flex align-items-center justify-content-center"
+          id="mouse1">鼠</li>
+        <li class="mouseLight mouseLight2 mouseFlash rounded-circle d-flex align-items-center justify-content-center"
+          id="mouse2">來</li>
+        <li class="mouseLight mouseLight3 mouseFlash rounded-circle d-flex align-items-center justify-content-center"
+          id="mouse3">數</li>
+        <li class="mouseLight mouseLight4 mouseFlash rounded-circle d-flex align-items-center justify-content-center"
+          id="mouse4">趣</li>
+      </ul>
+
+      <div class="d-flex pointLight-container">
+        <ul class="pointLight-wrap1 m-0">
+          <li
+            class="pointLight pointLight15 timing-0 rounded-circle d-flex align-items-center justify-content-center fw-bold start-0"
+            id="pointLight15">15分</li>
+          <li
+            class="pointLight pointLight20 timing-0 rounded-circle d-flex align-items-center justify-content-center fw-bold start-15"
+            id="pointLight20">20分</li>
+          <li
+            class="pointLight pointLight25 timing-0 rounded-circle d-flex align-items-center justify-content-center fw-bold start-20"
+            id="pointLight25">25分</li>
+          <li
+            class="pointLight pointLight30 timing-0 rounded-circle d-flex align-items-center justify-content-center fw-bold start-25"
+            id="pointLight30">30分</li>
         </ul>
-
-        <div class="d-flex pointLight-container">
-          <ul class="pointLight-wrap1 m-0">
-            <li
-              class="pointLight pointLight15 timing-0 rounded-circle d-flex align-items-center justify-content-center fw-bold start-0"
-              id="pointLight15">15分</li>
-            <li
-              class="pointLight pointLight20 timing-0 rounded-circle d-flex align-items-center justify-content-center fw-bold start-15"
-              id="pointLight20">20分</li>
-            <li
-              class="pointLight pointLight25 timing-0 rounded-circle d-flex align-items-center justify-content-center fw-bold start-20"
-              id="pointLight25">25分</li>
-            <li
-              class="pointLight pointLight30 timing-0 rounded-circle d-flex align-items-center justify-content-center fw-bold start-25"
-              id="pointLight30">30分</li>
-          </ul>
-          <ul class="pointLight-wrap2 m-0">
-            <li
-              class="pointLight pointLight35 timing-15 rounded-circle d-flex align-items-center justify-content-center fw-bold start-55"
-              id="pointLight35">35分</li>
-            <li
-              class="pointLight pointLight40 timing-15 rounded-circle d-flex align-items-center justify-content-center fw-bold start-65"
-              id="pointLight40">40分</li>
-            <li
-              class="pointLight pointLight45 timing-15 rounded-circle d-flex align-items-center justify-content-center fw-bold start-70"
-              id="pointLight45">45分</li>
-            <li
-              class="pointLight pointLight50 timing-15 rounded-circle d-flex align-items-center justify-content-center fw-bold start-30"
-              id="pointLight50">50分</li>
-          </ul>
-          <ul class="pointLight-wrap3 m-0">
-            <li
-              class="pointLight pointLight55 timing-15 rounded-circle d-flex align-items-center justify-content-center fw-bold start-60"
-              id="pointLight55">55分</li>
-            <li
-              class="pointLight pointLight60 timing-15 rounded-circle d-flex align-items-center justify-content-center fw-bold start-65"
-              id="pointLight60">60分</li>
-            <li
-              class="pointLight pointLight65 timing-15 rounded-circle d-flex align-items-center justify-content-center fw-bold start-70"
-              id="pointLight65">65分</li>
-            <li
-              class="pointLight pointLight70 timing-15 rounded-circle d-flex align-items-center justify-content-center fw-bold start-35"
-              id="pointLight70">70分</li>
-          </ul>
-          <ul class="pointLight-wrap4 m-0">
-            <li
-              class="pointLight pointLight75 timing-0 rounded-circle d-flex align-items-center justify-content-center fw-bold start-55"
-              id="pointLight75">75分</li>
-            <li
-              class="pointLight pointLight80 timing-0 rounded-circle d-flex align-items-center justify-content-center fw-bold start-50"
-              id="pointLight80">80分</li>
-            <li
-              class="pointLight pointLight85 timing-0 rounded-circle d-flex align-items-center justify-content-center fw-bold start-45"
-              id="pointLight85">85分</li>
-            <li
-              class="pointLight pointLight90 timing-0 rounded-circle d-flex align-items-center justify-content-center fw-bold start-40"
-              id="pointLight90">90分</li>
-          </ul>
-        </div>
-
-        <!-- 資訊牆 -->
-        <div class="gameNumber"><label for="gameNumber"></label><input type="number" id="gameNumber" name="gameNumber"
-            required min="1" max="20" size="20" />
-        </div>
-        <div class="ballNumber"><label for="ballNumber"></label><input type="number" id="ballNumber" name="ballNumber"
-            required min="1" max="100" size="20" /></div>
-        <div class="point"><label for="point"></label><input type="number" id="point" name="point" required min="1"
-            max="100" size="20" /></div>
-        <div class="ticket"><label for="ticket"></label><input type="number" id="ticket" name="ticket" required min="1"
-            max="100" size="20" /></div>
-        <!-- 資訊牆 end -->
+        <ul class="pointLight-wrap2 m-0">
+          <li
+            class="pointLight pointLight35 timing-15 rounded-circle d-flex align-items-center justify-content-center fw-bold start-55"
+            id="pointLight35">35分</li>
+          <li
+            class="pointLight pointLight40 timing-15 rounded-circle d-flex align-items-center justify-content-center fw-bold start-65"
+            id="pointLight40">40分</li>
+          <li
+            class="pointLight pointLight45 timing-15 rounded-circle d-flex align-items-center justify-content-center fw-bold start-70"
+            id="pointLight45">45分</li>
+          <li
+            class="pointLight pointLight50 timing-15 rounded-circle d-flex align-items-center justify-content-center fw-bold start-30"
+            id="pointLight50">50分</li>
+        </ul>
+        <ul class="pointLight-wrap3 m-0">
+          <li
+            class="pointLight pointLight55 timing-15 rounded-circle d-flex align-items-center justify-content-center fw-bold start-60"
+            id="pointLight55">55分</li>
+          <li
+            class="pointLight pointLight60 timing-15 rounded-circle d-flex align-items-center justify-content-center fw-bold start-65"
+            id="pointLight60">60分</li>
+          <li
+            class="pointLight pointLight65 timing-15 rounded-circle d-flex align-items-center justify-content-center fw-bold start-70"
+            id="pointLight65">65分</li>
+          <li
+            class="pointLight pointLight70 timing-15 rounded-circle d-flex align-items-center justify-content-center fw-bold start-35"
+            id="pointLight70">70分</li>
+        </ul>
+        <ul class="pointLight-wrap4 m-0">
+          <li
+            class="pointLight pointLight75 timing-0 rounded-circle d-flex align-items-center justify-content-center fw-bold start-55"
+            id="pointLight75">75分</li>
+          <li
+            class="pointLight pointLight80 timing-0 rounded-circle d-flex align-items-center justify-content-center fw-bold start-50"
+            id="pointLight80">80分</li>
+          <li
+            class="pointLight pointLight85 timing-0 rounded-circle d-flex align-items-center justify-content-center fw-bold start-45"
+            id="pointLight85">85分</li>
+          <li
+            class="pointLight pointLight90 timing-0 rounded-circle d-flex align-items-center justify-content-center fw-bold start-40"
+            id="pointLight90">90分</li>
+        </ul>
       </div>
-   
+
+      <!-- 資訊牆 -->
+      <div class="gameNumber"><label for="gameNumber"></label><input type="number" id="gameNumber" name="gameNumber"
+          required min="1" max="20" size="20" />
+      </div>
+      <div class="ballNumber"><label for="result_ball"></label><input type="number" id="result_ball" name="result_ball"
+          required min="1" max="100" size="20" /></div>
+      <div class="point"><label for="point"></label><input type="number" id="point" name="point" required min="1"
+          max="100" size="20" /></div>
+      <div class="ticket"><label for="ticket"></label><input type="number" id="ticket" name="ticket" required min="1"
+          max="100" size="20" /></div>
+      <!-- 資訊牆 end -->
+    </div>
+
 
     <!-- 娃娃機中間 -->
     <div class="row middle justify-content-center m-0 position-relative">
       <div class="middle-frame text-center p-0 ">
-        <img class="middle-img" src="http://192.168.1.59:8081/0/stream" />
+        <img class="middle-img" src="http://61.222.52.130:60081/0/stream" />
       </div>
       <!--拉桿 -->
-      <a href="javascript:void(0)" id="bar" class="d-inline-block">
-        <div class="bar" id="barControl"><img src="../assets/images/把手-長.svg" alt="把手" id="barImgLong"><img
+      <a href="javascript:void(0)" id="bar" class="d-block bar">
+        <div class="barControl" id="barControl"><img src="../assets/images/把手-長.svg" alt="把手" id="barImgLong"><img
             src="../assets/images/把手-短.svg" alt="短把手" id="barImgShort"></div>
       </a>
       <!-- 投幣按鈕 -->
@@ -130,7 +130,7 @@
       </div>
 
     </div>
-   
+
     <!-- 娃娃機下半部 -->
     <div class="handle position-relative p-0">
       <!-- 開始鈕 -->
@@ -140,7 +140,7 @@
               style="font-size:8vw; color: rgb(0, 81, 255)"><i class="fa-solid fa-circle-dot"></i></span></a></div>
 
       </div>
-     
+
     </div>
     <!-- 娃娃機下半部 end-->
 
@@ -163,15 +163,6 @@
       </div>
     </div>
 
-    <!-- 計算分數 -->
-    <div class="row">
-      <div class="col-4">
-        <label>Detail:</label>
-      </div>
-      <div class="col-6">
-        <input type="text" class="form_control" id="result_detail">
-      </div>
-    </div>
 
 
     <!-- audio -->
@@ -307,7 +298,7 @@
 
         //按開機鈕自動播放
         const pressBoot = document.getElementById('pressBoot');
-        const countdownElement = document.getElementById('ballNumber');  //球數那欄顯示倒數秒數
+        const countdownElement = document.getElementById('result_ball');  //球數那欄顯示倒數秒數
         let bootNumber = 0;  //計算開機次數
 
         pressBoot.addEventListener('click', function () {
@@ -393,7 +384,7 @@
         const coinAmount = document.getElementById('coinAmount');
         const ticket = document.getElementById('ticket');
         const cointMusic = document.getElementById('cointMusic');
-        const ballNumber = document.getElementById('ballNumber');
+        const result_ball= document.getElementById('result_ball');
 
         let coinCount = 0;
         buttonInsertCoin.addEventListener('click', function () {
@@ -401,12 +392,11 @@
 
           coinCount++;
           ticket.value = coinCount; //增加投幣次數
-          ballNumber.value = coinCount * 5;  //球數隨著局數增加
+          //球數隨著局數增加
           coinAmount.textContent = coinCount;
         })
 
 
-        //****球數隨著局數減少*****辨識完後減少
 
 
         //當Python辨識，5顆球都在面板上時，完成計分，每計一次分數，就少一局
@@ -526,7 +516,7 @@
 
 
         //串接ajax功能
-        const BIZLUTION_RESTFUL_API_URL = "http://192.168.1.59:5000/"
+        const BIZLUTION_RESTFUL_API_URL = "http://61.222.52.130:60050/"
         $(document).ready(function () {
 
           function insertCoin() {
@@ -565,12 +555,18 @@
                 $('#result_score').val(result.data.score)
                 $('#result_ball').val(result.data.ball)
                 $('#result_detail').val(result.data.detail)
+
+                //將球數內容改為:5-API的ball數量
+                const remainingBalls = 5 - parseInt($('#result_ball').val())
+                console.log(remainingBalls);
+                document.getElementById('result_ball').value = remainingBalls;
               }
             })
           }
 
-          //網址http://192.168.1.59:5000/insert_coin 自動跳出功能並執行
 
+          //網址http://192.168.1.59:5000/insert_coin 自動跳出功能並執行
+          //依照此id可執行
           $('#button_insert_coin').on('click', function (event) {
             insertCoin()
           })
@@ -588,6 +584,8 @@
 
 
         })
+
+
 
       </script>
 </body>
