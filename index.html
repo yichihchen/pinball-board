@@ -151,11 +151,8 @@
         </div>
         <!-- 娃娃機下半部 end-->
 
-
-
-
         <!-- 開機鈕 -->
-        <div class="boot-module">
+        <div class="boot-module" style="visibility: hidden;">
           <p>開機</p>
           <div class="boot-button"><a href="javascript:void(0)" id="pressBoot"><span
                 style="font-size:2rem; color: rgba(18, 211, 1, 0.662)"><i class="fa-solid fa-power-off"></i></span></a>
@@ -163,7 +160,7 @@
         </div>
 
         <!-- 關機鍵 -->
-        <div class="shutdown-module">
+        <div class="shutdown-module" style="visibility: hidden;">
           <p>關機</p>
           <div class="shutdown-button"><a href="javascript:void(0)" id="pressShutdown"><span
                 style="font-size:2rem; color: rgba(0, 129, 215, 0.747)"><i class="fa-solid fa-power-off"></i></span></a>
@@ -174,46 +171,52 @@
 
         <!-- audio -->
         <!-- 開機音樂 -->
-        <audio controls src="../assets/audio/鼠來鼠趣開機音樂1-完整一小段.mp3" id="bootMusic1_1" style="display:block;"></audio>
+        <audio controls src="../assets/audio/鼠來鼠趣開機音樂1-完整一小段.mp3" id="bootMusic1_1" style="visibility: hidden;"></audio>
         <audio controls src="../assets/audio/鼠來鼠趣開機音樂1-完整一小段(不含前面).mp3" id="bootMusic1_2"
-          style="display:block;"></audio>
+          style="visibility: hidden;"></audio>
         <audio controls src="../assets/audio/鼠來鼠趣開機音樂1-完整一小段(不含前面).mp3" id="bootMusic1_3"
-          style="display:block;"></audio>
+          style="visibility: hidden;"></audio>
 
 
-        <audio controls src="../assets/audio/鼠來鼠趣開機音樂2-完整一小段.mp3" id="bootMusic2_1" style="display:block;"></audio>
+        <audio controls src="../assets/audio/鼠來鼠趣開機音樂2-完整一小段.mp3" id="bootMusic2_1" style="visibility: hidden;"></audio>
         <audio controls src="../assets/audio/鼠來鼠趣開機音樂2-完整一小段(不含前面).mp3" id="bootMusic2_2"
-          style="display:block;"></audio>
+          style="visibility: hidden;"></audio>
         <audio controls src="../assets/audio/鼠來鼠趣開機音樂2-完整一小段(不含前面).mp3" id="bootMusic2_3"
-          style="display:block;"></audio>
+          style="visibility: hidden;"></audio>
 
-        <audio controls src="../assets/audio/鼠來鼠趣開機音樂3-完整一小段.mp3" id="bootMusic3_1" style="display:block;"></audio>
+        <audio controls src="../assets/audio/鼠來鼠趣開機音樂3-完整一小段.mp3" id="bootMusic3_1" style="visibility: hidden;"></audio>
         <audio controls src="../assets/audio/鼠來鼠趣開機音樂3-完整一小段(不含前面).mp3" id="bootMusic3_2"
-          style="display:block;"></audio>
+          style="visibility: hidden;"></audio>
         <audio controls src="../assets/audio/鼠來鼠趣開機音樂3-完整一小段(不含前面).mp3" id="bootMusic3_3"
-          style="display:block;"></audio>
+        style="visibility: hidden;"></audio>
 
         <!-- 投幣音樂 -->
-        <audio controls src="../assets/audio/投幣音樂.mp3" id="cointMusic" style="display:block;"></audio>
+        <audio controls src="../assets/audio/投幣音樂.mp3" id="cointMusic" style="visibility: hidden;"></audio>
 
         <!-- 開始音樂 -->
-        <audio controls src="../assets/audio/開始音樂.mp3" id="startMusic" style="display:block;"></audio>
+        <audio controls src="../assets/audio/開始音樂.mp3" id="startMusic" style="visibility: hidden;"></audio>
 
         <!-- 得分音樂1 -->
-        <audio controls src="../assets/audio/得分音樂1.mp3" id="playMusic1" style="display:block;"></audio>
+        <audio controls src="../assets/audio/得分音樂1.mp3" id="playMusic1"  style="visibility: hidden;"></audio>
 
         <!-- 得分音樂2 -->
-        <audio controls src="../assets/audio/得分音樂2.mp3" id="playMusic2" style="display:block;"></audio>
+        <audio controls src="../assets/audio/得分音樂2.mp3" id="playMusic2"  style="visibility: hidden;"></audio>
 
         <!-- audio end -->
 
         <!-- 計算開機次數 -->
         <div class="" id="bootNumber"></div>
         <!-- 計算開機次數 ends-->
+
+
+
       </div>
       <!-- scroller -->
+
+
     </div>
     <!-- all -->
+
 
 
     
@@ -553,11 +556,12 @@
         document.addEventListener("DOMContentLoaded", () => {
           console.log("Hello World!");
           const scroller = document.getElementById('scroller');
-          
+
           scroller.addEventListener("scroll", (event) => {
             //output.textContent = `scrollTop: ${scroller.scrollTop}`;
             //scroller.scroll(0,400)
             console.log('' + scroller.scrollTop);
+
           });
 
           startup();
@@ -591,25 +595,30 @@
 
 
         var limit = Math.max(document.body.scrollHeight, document.body.offsetHeight,
-          document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);
+          document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);  //計算上限
         function startup() {
-          const image = document.querySelector("#board");
+          const image = document.querySelector("#all");
           const scroller = document.querySelector("#scroller");
-          image.addEventListener("touchstart", handleStart);
-          image.addEventListener("touchend", handleEnd);
-          image.addEventListener("touchcancel", handleCancel);
-          image.addEventListener("touchmove", handleMove);
-          let realWidth = image.naturalWidth;
-          let realHeight = image.naturalHeight;
+          image.addEventListener("touchstart", handleStart);  //觸摸開始
+          image.addEventListener("touchend", handleEnd);   //觸摸結束
+          image.addEventListener("touchcancel", handleCancel);  //觸摸事件被取消的事件
+          image.addEventListener("touchmove", handleMove);  //觸摸事件期間手指移動時持續觸發的事件
+          let realWidth = image.naturalWidth;  //圖片自然寬度
+          let realHeight = image.naturalHeight; //圖片自然高度
           console.log(image.offsetHeight + " " + realHeight);
           console.log(image.offsetWidth + " " + realWidth);
-          console.log(document.documentElement.clientHeight)
-          console.log(document.documentElement.clientWidth)
+          console.log(document.documentElement.clientHeight)  //可視高度1662
+          console.log(document.documentElement.clientWidth)   //可視寬度730
           console.log("Initialized.");
           realHeight = 2000
           realWidth = 600
           imageHeight = realHeight * document.documentElement.clientWidth / realWidth
+          // imageHeight = realHeight;
+
           center_y = (imageHeight - document.documentElement.clientHeight) / 2
+          // center_y = (imageHeight) / 3
+
+
           scroller.scroll({
             top: center_y,
             left: 0,
