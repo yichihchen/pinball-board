@@ -1,19 +1,50 @@
+.all-center {
+  position: relative; //畫面只顯示再數字
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow-y: auto;
 
+}
 
+.all-top {
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  overflow-y: auto;
+}
+
+#scroller {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  border: 5px dashed orange;
+}
 
 .board {
 
   width: 100vw;
-  min-height: calc(100vw * 1.3);  //100:130為背景圖的比例
-  
+  min-height: calc(100vw * 1.3); //100:130為背景圖的比例
+
   background-image: url(/assets/images/彈珠檯-反光修正.png);
- 
+
   @include picture() {
-    background-size: 100% 100%;   //背景的寬度為100% 原因是視窗依照其寬度做縮放，高度是隨著寬度而改變
-    background-position: center 0%;   //背景的基準點為，父層容器x軸的中央(背景圖x軸置中，y軸從背景的頂部開始)
+    background-size: 100% 100%; //背景的寬度為100% 原因是視窗依照其寬度做縮放，高度是隨著寬度而改變
+    background-position: center 0%; //背景的基準點為，父層容器x軸的中央(背景圖x軸置中，y軸從背景的頂部開始)
 
   }
 
+}
+
+#board{
+  margin:0;
+  padding:0;
+  width: 100%;
+  height: auto;
 }
 
 //上方藍色閃光
@@ -49,7 +80,7 @@
 
 .pointLight-container {
 
-  position: absolute;  //推到board中間
+  position: absolute; //推到board中間
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -113,6 +144,7 @@
   transform: translate(-50%, -50%);
   top: 28.6vw;
   left: 11.5vw;
+
   li {
     margin-bottom: 0.3vw !important;
   }
@@ -122,7 +154,7 @@
 //數來數去的位置
 //球的外觀
 .mouseLight {
-  width: 6vw;  //RWD
+  width: 6vw; //RWD
   height: 6vw;
   background-color: rgb(70, 255, 246);
   font-size: 4vw;
@@ -136,7 +168,7 @@
   transform: translate(-50%, -50%);
   top: 42%;
   left: 50%;
-  
+
 }
 
 
@@ -144,8 +176,8 @@
   position: relative;
   transform: translate(-50%, -50%);
   top: 3.5vw;
-  left: -3.4vw;  
-  
+  left: -3.4vw;
+
 }
 
 .mouseLight2 {
@@ -408,7 +440,7 @@ $timings: (
   position: relative;
   transform: translate(0%, 0%);
   top: 40vw;
-  left: 13.5vw;
+  left: -13.6vw;
 
 
   font-family: Orbitron, sans-serif;
@@ -452,7 +484,7 @@ $timings: (
   left: 50%;
 }
 
-#gameNumber {
+#result_score {
   background: transparent;
   width: 15vw;
   height: 6.6vw;
@@ -486,8 +518,8 @@ $timings: (
   position: relative;
   transform: translate(0%, 0%);
   top: 40vw;
-  left: -13.5vw;
-  
+  left: 14vw;
+
   font-family: Orbitron, sans-serif;
   font-size: 4vw;
   color: #e92469;
@@ -501,7 +533,7 @@ $timings: (
 .handle {
 
   width: 100vw;
-  min-height: calc(100vw * 0.25);  //100:130為背景圖的比例
+  min-height: calc(100vw * 0.25); //100:130為背景圖的比例
   background-image: url(/assets/images/拉桿模組.png);
 
   @include picture() {
@@ -525,11 +557,12 @@ $timings: (
 
 //將拉桿至於娃娃機台右側
 .bar {
-  
+
   position: absolute;
   top: 50vw;
   left: 90vw;
-  img{
+
+  img {
     width: 8vw;
   }
 }
@@ -559,15 +592,15 @@ $timings: (
 //middle
 .middle-frame {
   width: 85% !important;
-  height: calc(85%*0.7) !important;   //這段有用在哪??
-  overflow: hidden;  
+  height: calc(85%*0.7) !important; //這段有用在哪??
+  overflow: hidden;
 
   img {
-    min-width:120% !important;  //讓圖片放大顯示於middle-frame之下
+    min-width: 120% !important; //讓圖片放大顯示於middle-frame之下
     position: relative;
-    transform: translate(-50%, 0%);  //調整圖片y軸位置
-    top:50%;
-    left:50%;
+    transform: translate(-50%, 0%); //調整圖片y軸位置
+    top: 50%;
+    left: 50%;
   }
 
 }
