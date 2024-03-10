@@ -13,8 +13,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
 
   <title>index</title>
-  <script type="module" crossorigin src="/pinball-board/assets/index-8dd2368a.js"></script>
-  <link rel="stylesheet" href="/pinball-board/assets/index-f4e31858.css">
+  <script type="module" crossorigin src="/pinball-board/assets/index-12819f15.js"></script>
+  <link rel="stylesheet" href="/pinball-board/assets/index-c8a72788.css">
 </head>
 
 <body>
@@ -176,23 +176,17 @@
         <!-- audio -->
         <!-- 開機音樂 -->
         <audio controls src="../assets/audio/鼠來鼠趣開機音樂1-完整一小段.mp3" id="bootMusic1_1" style="display:none;"></audio>
-        <audio controls src="../assets/audio/鼠來鼠趣開機音樂1-完整一小段(不含前面).mp3" id="bootMusic1_2"
-        style="display:none;"></audio>
-        <audio controls src="../assets/audio/鼠來鼠趣開機音樂1-完整一小段(不含前面).mp3" id="bootMusic1_3"
-        style="display:none;"></audio>
+        <audio controls src="../assets/audio/鼠來鼠趣開機音樂1-完整一小段(不含前面).mp3" id="bootMusic1_2" style="display:none;"></audio>
+        <audio controls src="../assets/audio/鼠來鼠趣開機音樂1-完整一小段(不含前面).mp3" id="bootMusic1_3" style="display:none;"></audio>
 
 
         <audio controls src="../assets/audio/鼠來鼠趣開機音樂2-完整一小段.mp3" id="bootMusic2_1" style="display:none;"></audio>
-        <audio controls src="../assets/audio/鼠來鼠趣開機音樂2-完整一小段(不含前面).mp3" id="bootMusic2_2"
-        style="display:none;"></audio>
-        <audio controls src="../assets/audio/鼠來鼠趣開機音樂2-完整一小段(不含前面).mp3" id="bootMusic2_3"
-        style="display:none;"></audio>
+        <audio controls src="../assets/audio/鼠來鼠趣開機音樂2-完整一小段(不含前面).mp3" id="bootMusic2_2" style="display:none;"></audio>
+        <audio controls src="../assets/audio/鼠來鼠趣開機音樂2-完整一小段(不含前面).mp3" id="bootMusic2_3" style="display:none;"></audio>
 
         <audio controls src="../assets/audio/鼠來鼠趣開機音樂3-完整一小段.mp3" id="bootMusic3_1" style="display:none;"></audio>
-        <audio controls src="../assets/audio/鼠來鼠趣開機音樂3-完整一小段(不含前面).mp3" id="bootMusic3_2"
-        style="display:none;"></audio>
-        <audio controls src="../assets/audio/鼠來鼠趣開機音樂3-完整一小段(不含前面).mp3" id="bootMusic3_3"
-        style="display:none;"></audio>
+        <audio controls src="../assets/audio/鼠來鼠趣開機音樂3-完整一小段(不含前面).mp3" id="bootMusic3_2" style="display:none;"></audio>
+        <audio controls src="../assets/audio/鼠來鼠趣開機音樂3-完整一小段(不含前面).mp3" id="bootMusic3_3" style="display:none;"></audio>
 
         <!-- 投幣音樂 -->
         <audio controls src="../assets/audio/投幣音樂.mp3" id="cointMusic" style="display:none;"></audio>
@@ -561,14 +555,14 @@
           const scroller = document.getElementById('scroller');
           const image = document.querySelector("#drag");
 
-      
+
 
           scroller.addEventListener("scroll", (event) => {
             //output.textContent = `scrollTop: ${scroller.scrollTop}`;
             //scroller.scroll(0,400)
             console.log('scrollTop' + scroller.scrollTop);
             //scroller.scrollTop:滑過視窗上方的距離
-           
+
 
           });
 
@@ -601,12 +595,16 @@
             left: 0,
             behavior: "smooth",
           });
+
+
         }
 
 
         var limit = Math.max(document.body.scrollHeight, document.body.offsetHeight,
           document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);  //計算上限
+
         function startup() {
+          const scroller = document.getElementById('scroller');
           const image = document.querySelector("#drag");
 
           image.addEventListener("touchstart", handleStart);  //觸摸開始
@@ -616,32 +614,48 @@
           let realWidth = image.naturalWidth;  //圖片自然寬度
           let realHeight = image.naturalHeight; //圖片自然高度
 
+
+
           console.log(`realWidth${realWidth}`);  //undefined
           console.log(`realHeight${realHeight}`); //undefined
-          console.log(document.documentElement.clientHeight)  //可視高度 #scroller的高度
-          console.log(document.documentElement.clientWidth)   //可視寬度
+          console.log(`document.documentElement.clientHeight${document.documentElement.clientHeight}`)  //可視高度(螢幕高度)??
+          console.log(`document.documentElement.clientWidth${document.documentElement.clientWidth}`)   //可視寬度(螢幕寬度)??
           console.log("Initialized.");
-          
-          realHeight = image.offsetHeight;
+          console.log(`image.scrollHeight${image.scrollHeight}`); //image.scrollHeight
+
+          // realHeight = image.clientHeight;
           // realHeight = image.offsetHeight;
-          //offsetHeight是卷軸外的高度
+          
+
+          realHeight = image.clientHeight; //image.clientWidth 即為drag高度(不包含往上滑隱藏的部分)
+          console.log(`realHeight${realHeight}`);
+          console.log(`image.offsetHeight${image.offsetHeight}`);   //image.offsetHeight 即為drag高度+border的高度(不包含往上滑隱藏的部分)
+          console.log(`image.naturalHeight${image.naturalHeight}`);
           // realWidth = 600
-          realWidth = image.offsetWidth;
+
+          // realWidth = image.offsetWidth;
+          realWidth = image.clientWidth;
+
 
           console.log(image.offsetHeight + " " + realHeight);
           console.log(image.offsetWidth + " " + realWidth);
-          console.log(`realHeight${realHeight}`);
+
 
           imageHeight = realHeight * document.documentElement.clientWidth / realWidth
+          console.log(`imageHeight${imageHeight}`);  //drag不包含已經往上滑部分的高
           // imageHeight = realHeight;
 
-          // center_y = (imageHeight - document.documentElement.clientHeight) / 2
-          center_y = realHeight/2;
+          console.log(`scrollerHeight${scroller.offsetHeight}`); //
+          center_y = (imageHeight - document.documentElement.clientHeight) * 2;
+          // center_y = realHeight/2;
+
+          // center_y = image.scrollHeight*1;  //image.offsetHeight加上scrollTop
+
           console.log(`center_y${center_y}`);
 
 
           scroller.scroll({
-            top: center_y,
+            top: 1000,
             left: 0,
             behavior: "instant",
           });
@@ -710,7 +724,7 @@
           }
 
 
- 
+
 
           //網址http://192.168.1.59:5000/insert_coin 自動跳出功能並執行
           //依照此id可執行
