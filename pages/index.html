@@ -618,8 +618,8 @@
 
           console.log(`realWidth${realWidth}`);  //undefined
           console.log(`realHeight${realHeight}`); //undefined
-          console.log(`document.documentElement.clientHeight${document.documentElement.clientHeight}`)  //可視高度(螢幕高度)??
-          console.log(`document.documentElement.clientWidth${document.documentElement.clientWidth}`)   //可視寬度(螢幕寬度)??
+          console.log(`document.documentElement.clientHeight${document.documentElement.clientHeight}`)  //可視高度(螢幕高度)
+          console.log(`document.documentElement.clientWidth${document.documentElement.clientWidth}`)   //可視寬度(螢幕寬度)
           console.log("Initialized.");
           console.log(`image.scrollHeight${image.scrollHeight}`); //image.scrollHeight
 
@@ -641,13 +641,13 @@
           console.log(image.offsetWidth + " " + realWidth);
 
 
-          imageHeight = realHeight * document.documentElement.clientWidth / realWidth
-          console.log(`imageHeight${imageHeight}`);  //drag不包含已經往上滑部分的高
+          // imageHeight = realHeight * document.documentElement.clientWidth / realWidth  //512*315/315
+          // console.log(`imageHeight${imageHeight}`);  //drag不包含已經往上滑部分的高
           // imageHeight = realHeight;
 
           console.log(`scrollerHeight${scroller.offsetHeight}`); //
-          center_y = (imageHeight - document.documentElement.clientHeight) * 2;
-          // center_y = realHeight/2;
+          // center_y = (imageHeight - document.documentElement.clientHeight)/2; //512-831/2
+          center_y = realHeight/2;
 
           // center_y = image.scrollHeight*1;  //image.offsetHeight加上scrollTop
 
@@ -657,7 +657,7 @@
           scroller.scroll({
             top: center_y,
             left: 0,
-            behavior: "instant",
+            behavior: "auto",
           });
         }
 
