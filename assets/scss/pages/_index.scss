@@ -20,9 +20,9 @@
   overflow-x: hidden;
   margin: 0;
   padding: 0;
-  height: 100vh;
+  height: calc(100vw*1.5);  //可更改成依照width等比例
   width: 100vw;
- 
+
 }
 
 .board {
@@ -40,9 +40,9 @@
 
 }
 
-#board{
-  margin:0;
-  padding:0;
+#board {
+  margin: 0;
+  padding: 0;
   width: 100%;
   height: auto;
 }
@@ -549,7 +549,19 @@ $timings: (
   left: 26%;
 }
 
+//開始燈光閃爍動畫
+.shinning{
+  animation: shinning 0.8s infinite;
+}
 
+@keyframes shinning{
+  20% {
+    color:rgb(22, 86, 247); 
+  }
+  60% {
+    color:rgb(21, 21, 21); 
+  }
+}
 
 
 
@@ -574,6 +586,8 @@ $timings: (
   top: 73%;
   left: 1%;
 }
+
+
 
 #barImgLong {
   position: relative;
