@@ -641,8 +641,8 @@
           console.log(image.offsetWidth + " " + realWidth);
 
 
-          // imageHeight = realHeight * document.documentElement.clientWidth / realWidth  //512*315/315
-          // console.log(`imageHeight${imageHeight}`);  //drag不包含已經往上滑部分的高
+          imageHeight = realHeight * document.documentElement.clientWidth / realWidth  //512*315/315
+          console.log(`imageHeight${imageHeight}`);  //drag不包含已經往上滑部分的高
           // imageHeight = realHeight;
 
           console.log(`scrollerHeight${scroller.offsetHeight}`); //
@@ -657,7 +657,7 @@
           scroller.scroll({
             top: center_y,
             left: 0,
-            behavior: "auto",
+            behavior: "instant",
           });
         }
 
