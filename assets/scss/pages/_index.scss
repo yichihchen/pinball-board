@@ -20,8 +20,9 @@
   overflow-x: hidden;
   margin: 0;
   padding: 0;
-  height: 100%;  //可更改成依照width等比例
   width: 100vw;
+  height: calc(100vw*1.6);  //可更改成依照width等比例
+ 
 
 }
 
