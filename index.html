@@ -284,6 +284,8 @@
 
 
         //當偵測到分數不等於0時，執行firstGetpoint，而且只執行一次
+        // 在頁面載入完成後直接觸發
+        document.addEventListener('DOMContentLoaded', watchScoreLight);
 
         function watchScoreLight() {
 
@@ -293,8 +295,7 @@
           if ((result_score.value !== 0 && (result_score.value) % 5 !== 0)) {
 
             lights.forEach(function (item) {
-              // item.classList.remove('firstGetpoint', 'pointLight-out1', 'pointLight-out2', 'highlight'); //加這一行，讓顯示特並分數後，其他動畫不會繼續跑出來
-              // item.classList.add('firstGetpoint');
+
               item.classList.remove('firstGetpoint', 'pointLight-out1', 'pointLight-out2', 'highlight', 'nothighlight');
               item.classList.add('nothighlight');
             })
@@ -305,9 +306,32 @@
             //result_ball.value為0時，觸發下面功能
             //當分數為板子所標示的分數時，亮燈顯示該分數
 
-            const getPointId = document.getElementById(`pointLight${result_score.value}`); //null
-            console.log(result_score);  //undefined
+            // result_score.addEventListener('', function (event) {
+            //   const getPointId = document.getElementById(`pointLight${result_score.value}`); //null
 
+
+            //   console.log(`result_score${result_score.value}`);
+            //   console.log(event);
+            // })
+
+
+
+            setInterval(function () {
+              const resultScoreInput = document.getElementById('result_score');
+              const getPointId = document.getElementById(`pointLight${result_score.value}`);
+
+              if (resultScoreInput) {
+                const value = resultScoreInput.value;
+                console.log('Current value:', value);
+                console.log(`pointLight${value}`);
+                document.getElementById(`pointLight${value}`).classList.remove('firstGetpoint', 'pointLight-out1', 'pointLight-out2', 'highlight', 'nothighlight');
+                document.getElementById(`pointLight${value}`).classList.add('highlight');
+
+              } else {
+                console.error('Element with id "result_score" not found.');
+               
+              }
+            }, 1000);
 
 
             //****順便一起抓data-ticket的值****
@@ -336,8 +360,7 @@
           }
 
         }
-        // 在頁面載入完成後直接觸發
-        document.addEventListener('DOMContentLoaded', watchScoreLight);
+
 
 
         //按開機鈕自動播放
@@ -568,7 +591,7 @@
 
           });
 
-          
+
         });
 
         //瀏覽器窗口大小變化時觸發startup()
@@ -628,7 +651,7 @@
 
           // realHeight = image.clientHeight;
           // realHeight = image.offsetHeight;
-          
+
 
           realHeight = image.clientHeight; //image.clientWidth 即為drag高度(不包含往上滑隱藏的部分)
           console.log(`realHeight${realHeight}`);
@@ -651,7 +674,7 @@
           console.log(`scrollerHeight${scroller.offsetHeight}`); //
           // center_y = (imageHeight - document.documentElement.clientHeight)/2; //512-831/2
           center_y = (image.scrollHeight - scroller.clientHeight);  //center_y 的值應該是一個正數，代表著相對於 scroller 元素頂部的垂直偏移量。center_y 的值不應該超過 scroller 元素的高度
-      
+
           // center_y = image.scrollHeight/2;  //image.offsetHeight加上scrollTop
 
           console.log(`center_y${center_y}`);
