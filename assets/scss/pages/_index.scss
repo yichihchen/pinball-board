@@ -1,18 +1,5 @@
-.all-center {
-  position: relative; //畫面只顯示再數字
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  overflow-y: auto;
-
-}
-
-.all-top {
-  position: absolute;
-  top: 0%;
-  left: 50%;
-  transform: translate(-50%, 0%);
-  overflow-y: auto;
+#all {
+  background-color: red;
 }
 
 #scroller {
@@ -21,9 +8,16 @@
   margin: 0;
   padding: 0;
   width: 100vw;
-  // height: calc(100vw*2);  //可更改成依照width等比例
- 
+  height: 120%;  //可更改成依照width等比例
+  background-color: green;
+  position: fixed;
 
+
+}
+
+#drag {
+  background-color: pink;
+  position: relative;
 }
 
 .board {
@@ -551,16 +545,17 @@ $timings: (
 }
 
 //開始燈光閃爍動畫
-.shinning{
+.shinning {
   animation: shinning 0.8s infinite;
 }
 
-@keyframes shinning{
+@keyframes shinning {
   20% {
-    color:rgb(22, 86, 247); 
+    color: rgb(22, 86, 247);
   }
+
   60% {
-    color:rgb(21, 21, 21); 
+    color: rgb(21, 21, 21);
   }
 }
 
