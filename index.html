@@ -13,8 +13,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
 
   <title>index</title>
-  <script type="module" crossorigin src="/pinball-board/assets/index-cecf754a.js"></script>
-  <link rel="stylesheet" href="/pinball-board/assets/index-067a8c5e.css">
+  <script type="module" crossorigin src="/pinball-board/assets/index-7ed0da06.js"></script>
+  <link rel="stylesheet" href="/pinball-board/assets/index-7ba224a6.css">
 </head>
 
 <body>
@@ -305,7 +305,9 @@
             //result_ball.value為0時，觸發下面功能
             //當分數為板子所標示的分數時，亮燈顯示該分數
 
-            const getPointId = document.getElementById('result_score.value'); //null
+            const getPointId = document.getElementById(`pointLight${result_score.value}`); //null
+            console.log(result_score);  //undefined
+
 
 
             //****順便一起抓data-ticket的值****
@@ -556,7 +558,7 @@
           const image = document.querySelector("#drag");
 
 
-
+          startup();
           scroller.addEventListener("scroll", (event) => {
             //output.textContent = `scrollTop: ${scroller.scrollTop}`;
             //scroller.scroll(0,400)
@@ -566,7 +568,7 @@
 
           });
 
-          startup();
+          
         });
 
         //瀏覽器窗口大小變化時觸發startup()
@@ -604,6 +606,7 @@
           document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);  //計算上限
 
         function startup() {
+
           const scroller = document.getElementById('scroller');
           const image = document.querySelector("#drag");
 
@@ -647,9 +650,9 @@
 
           console.log(`scrollerHeight${scroller.offsetHeight}`); //
           // center_y = (imageHeight - document.documentElement.clientHeight)/2; //512-831/2
-          center_y = realHeight/2;
-
-          // center_y = image.scrollHeight*1;  //image.offsetHeight加上scrollTop
+          center_y = (image.scrollHeight - scroller.clientHeight);  //center_y 的值應該是一個正數，代表著相對於 scroller 元素頂部的垂直偏移量。center_y 的值不應該超過 scroller 元素的高度
+      
+          // center_y = image.scrollHeight/2;  //image.offsetHeight加上scrollTop
 
           console.log(`center_y${center_y}`);
 
@@ -717,6 +720,7 @@
                 document.getElementById('result_ball').value = remainingBalls;
 
                 //加
+                watchScoreLight();
 
 
               }
