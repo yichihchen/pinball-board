@@ -246,8 +246,10 @@
         // const coinAmount = document.getElementById('coinAmount');
         const ticket = document.getElementById('ticket');
         const cointMusic = document.getElementById('cointMusic');
-        const result_ball = document.getElementById('result_ball');
-        const result_score = document.getElementById('result_score');
+        // const result_ball = document.getElementById('result_ball');
+        const result_ball = document.querySelector('input[name="result_ball"]');
+        // const result_score = document.getElementById('result_score');
+        const result_score = document.querySelector('input[name="result_score"]');
 
         //打彈珠背景音樂
         const playMusic1 = document.getElementById('playMusic1');
@@ -285,81 +287,48 @@
 
         //當偵測到分數不等於0時，執行firstGetpoint，而且只執行一次
         // 在頁面載入完成後直接觸發
-        document.addEventListener('DOMContentLoaded', watchScoreLight);
+        const event = new Event('change');  //將創建的監聽名稱改成input
 
-        function watchScoreLight() {
-
+        function handleResultScoreChange() {
 
           // 分數不是0也不是五的倍數
-          //**不是0的時候也觸發**
-          if ((result_score.value !== 0 && (result_score.value) % 5 !== 0)) {
+          if (Number(result_ball.value) === 0 && Number(result_score.value) % 5 !== 0) {
 
             lights.forEach(function (item) {
-
               item.classList.remove('firstGetpoint', 'pointLight-out1', 'pointLight-out2', 'highlight', 'nothighlight');
               item.classList.add('nothighlight');
+
             })
 
-          } else if ((result_score.value) !== 0 && (result_score.value) % 5 === 0) {
-
-
-            //result_ball.value為0時，觸發下面功能
-            //當分數為板子所標示的分數時，亮燈顯示該分數
-
-            // result_score.addEventListener('', function (event) {
-            //   const getPointId = document.getElementById(`pointLight${result_score.value}`); //null
-
-
-            //   console.log(`result_score${result_score.value}`);
-            //   console.log(event);
-            // })
-
-
-
-            setInterval(function () {
-              const resultScoreInput = document.getElementById('result_score');
-              const getPointId = document.getElementById(`pointLight${result_score.value}`);
-
-              if (resultScoreInput) {
-                const value = resultScoreInput.value;
-                console.log('Current value:', value);
-                console.log(`pointLight${value}`);
-                document.getElementById(`pointLight${value}`).classList.remove('firstGetpoint', 'pointLight-out1', 'pointLight-out2', 'highlight', 'nothighlight');
-                document.getElementById(`pointLight${value}`).classList.add('highlight');
-
-              } else {
-                console.error('Element with id "result_score" not found.');
-               
-              }
-            }, 1000);
-
+          } else if (Number(result_ball.value) === 0 && Number(result_score.value) % 5 === 0) {
 
             //****順便一起抓data-ticket的值****
+            // const getPointId = document.getElementById('pointLight20');
             // const ticketValue = getPointId.getAttribute('data-ticket');
             // console.log(ticketValue); 
+            setTimeout(function () {//這裡加上清除所有動畫樣式
 
+              lights.forEach(function (item) {
+                //將"不是"得分的分數反灰
+                if (item.id !== `pointLight${(result_score.value)}`) {
+                  item.classList.remove('firstGetpoint', 'pointLight-out1', 'pointLight-out2', 'highlight', 'nothighlight');
+                  item.classList.add('nothighlight');
+                  console.log("執行if");
+                } else {
+                  item.classList.remove('firstGetpoint', 'pointLight-out1', 'pointLight-out2', 'highlight', 'nothighlight');
+                  item.classList.add('highlight');
+                  console.log("執行else");
+                }
+              });
 
-            //這裡加上清除所有動畫樣式
-            lights.forEach(function (item) {
-              //將"不是"得分的分數反灰
-              if (item.id !== `pointLight${(result_score.value)}`) {
-                item.classList.remove('firstGetpoint', 'pointLight-out1', 'pointLight-out2', 'highlight', 'nothighlight');
-                item.classList.add('nothighlight');
-              } else {
-                item.classList.remove('firstGetpoint', 'pointLight-out1', 'pointLight-out2', 'highlight', 'nothighlight');
-                item.classList.add('highlight');
-                console.log(5555);
-                //將data-ticket放在ticket的input
-                ticket.value = ticketValue;
-                console.log(ticketValue);
-
-              }
-
-            });
-
+            }, 3000);
           }
 
         }
+
+
+        result_score.dispatchEvent(event);
+
 
 
 
@@ -743,8 +712,8 @@
                 document.getElementById('result_ball').value = remainingBalls;
 
                 //加
-                watchScoreLight();
-
+                // watchScoreLight();
+                handleResultScoreChange();
 
               }
             })
