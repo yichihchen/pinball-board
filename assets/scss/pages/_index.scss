@@ -1,23 +1,21 @@
-#all {
-  background-color: red;
-}
 
 #scroller {
   overflow-y: scroll;
   overflow-x: hidden;
-  margin: 0;
-  padding: 0;
+  margin : 0;
+  padding : 0;
+  height: 100vh;
   width: 100vw;
-  height: 120%;  //可更改成依照width等比例
-  background-color: green;
-  position: fixed;
-
-
+  /*border: 5px dashed orange;*/
+  
 }
 
 #drag {
   background-color: pink;
-  position: relative;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: auto;
 }
 
 .board {
