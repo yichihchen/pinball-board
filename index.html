@@ -126,8 +126,8 @@
           </div>
           <!--拉桿 -->
           <a href="javascript:void(0)" id="bar" class="d-block bar">
-            <div class="barControl" id="barControl"><img src="/user@192.168.1.59/assets/把手-長-4ba8f537.svg" alt="把手" id="barImgLong"><img
-                src="/user@192.168.1.59/assets/把手-短-447b12b9.svg" alt="短把手" id="barImgShort"></div>
+            <div class="barControl" id="barControl"><img src="/user@192.168.1.59/assets/把手-長-4ba8f537.svg" alt="把手"
+                id="barImgLong"><img src="/user@192.168.1.59/assets/把手-短-447b12b9.svg" alt="短把手" id="barImgShort"></div>
           </a>
           <!-- 投幣按鈕 -->
           <div class="coin">
@@ -220,488 +220,418 @@
 
 
 
-    
-      
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-      <script>
 
 
-        // 獲取所有點燈的元素
-        const lights = document.querySelectorAll('.pointLight');
-
-        //在每一局的第一次得分就閃一次
-        const pointAmount = document.getElementById('point');
-
-        //開機音樂
-        const bootMusic1_1 = document.getElementById('bootMusic1_1');
-        const bootMusic1_2 = document.getElementById('bootMusic1_2');
-        const bootMusic1_3 = document.getElementById('bootMusic1_3');
-        const bootMusic2_1 = document.getElementById('bootMusic2_1');
-        const bootMusic2_2 = document.getElementById('bootMusic2_2');
-        const bootMusic2_3 = document.getElementById('bootMusic2_3');
-        const bootMusic3_1 = document.getElementById('bootMusic3_1');
-        const bootMusic3_2 = document.getElementById('bootMusic3_2');
-        const bootMusic3_3 = document.getElementById('bootMusic3_3');
-
-        //遊戲機資訊變數
-        const buttonInsertCoin = document.getElementById('button_insert_coin');
-        // const coinAmount = document.getElementById('coinAmount');
-        const ticket = document.getElementById('ticket');
-        const cointMusic = document.getElementById('cointMusic');
-        // const result_ball = document.getElementById('result_ball');
-        const result_ball = document.querySelector('input[name="result_ball"]');
-        // const result_score = document.getElementById('result_score');
-        const result_score = document.querySelector('input[name="result_score"]');
-
-        //打彈珠背景音樂
-        const playMusic1 = document.getElementById('playMusic1');
-        const playMusic2 = document.getElementById('playMusic2');
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script>
 
 
+    // 獲取所有點燈的元素
+    const lights = document.querySelectorAll('.pointLight');
 
-        function lightStartFlash() {
-          // 逐個處理每個點燈元素
-          lights.forEach((light, index) => {
-            const randomDelay = Math.floor(Math.random() * (1000 - 400 + 1)) + 400;
+    //在每一局的第一次得分就閃一次
+    const pointAmount = document.getElementById('point');
 
-            // 設定 pointLight-out1 的延遲時間
-            const delay1 = randomDelay; //****這裡會有隨機閃燈的效果,但要解決延遲播放問題****
+    //開機音樂
+    const bootMusic1_1 = document.getElementById('bootMusic1_1');
+    const bootMusic1_2 = document.getElementById('bootMusic1_2');
+    const bootMusic1_3 = document.getElementById('bootMusic1_3');
+    const bootMusic2_1 = document.getElementById('bootMusic2_1');
+    const bootMusic2_2 = document.getElementById('bootMusic2_2');
+    const bootMusic2_3 = document.getElementById('bootMusic2_3');
+    const bootMusic3_1 = document.getElementById('bootMusic3_1');
+    const bootMusic3_2 = document.getElementById('bootMusic3_2');
+    const bootMusic3_3 = document.getElementById('bootMusic3_3');
 
-            setTimeout(() => {
+    //遊戲機資訊變數
+    const buttonInsertCoin = document.getElementById('button_insert_coin');
+    // const coinAmount = document.getElementById('coinAmount');
+    const ticket = document.getElementById('ticket');
+    const cointMusic = document.getElementById('cointMusic');
+    // const result_ball = document.getElementById('result_ball');
+    const result_ball = document.querySelector('input[name="result_ball"]');
+    // const result_score = document.getElementById('result_score');
+    const result_score = document.querySelector('input[name="result_score"]');
 
-              light.classList.add('pointLight-out1'); // 添加 pointLight-out1 class
-            }, delay1);
-
-            // 設定 pointLight-out2 的延遲時間，延遲 5000 毫秒再執行
-
-            const delay2 = 5000; // pointLight-out2延遲5000毫秒再執行
-
-            setTimeout(() => {
-              light.classList.add('pointLight-out2'); // 添加 pointLight-out2 class
-            }, delay2);
-          });
-        }
-
-        lightStartFlash();
+    //打彈珠背景音樂
+    const playMusic1 = document.getElementById('playMusic1');
+    const playMusic2 = document.getElementById('playMusic2');
 
 
 
+    function lightStartFlash() {
+      // 逐個處理每個點燈元素
+      lights.forEach((light, index) => {
+        const randomDelay = Math.floor(Math.random() * (1000 - 400 + 1)) + 400;
 
-        //當偵測到分數不等於0時，執行firstGetpoint，而且只執行一次
-        // 在頁面載入完成後直接觸發
+        // 設定 pointLight-out1 的延遲時間
+        const delay1 = randomDelay; //****這裡會有隨機閃燈的效果,但要解決延遲播放問題****
+
+        setTimeout(() => {
+
+          light.classList.add('pointLight-out1'); // 添加 pointLight-out1 class
+        }, delay1);
+
+        // 設定 pointLight-out2 的延遲時間，延遲 5000 毫秒再執行
+
+        const delay2 = 5000; // pointLight-out2延遲5000毫秒再執行
+
+        setTimeout(() => {
+          light.classList.add('pointLight-out2'); // 添加 pointLight-out2 class
+        }, delay2);
+      });
+    }
+
+    lightStartFlash();
 
 
-        function handleResultScoreChange() {
 
-          // 分數不是0也不是五的倍數
-          if (Number(result_ball.value) === 0 && Number(result_score.value) % 5 !== 0) {
 
-            lights.forEach(function (item) {
+    //當偵測到分數不等於0時，執行firstGetpoint，而且只執行一次
+    // 在頁面載入完成後直接觸發
+
+
+    function handleResultScoreChange() {
+
+      // 分數不是0也不是五的倍數
+      if (Number(result_ball.value) === 0 && Number(result_score.value) % 5 !== 0) {
+
+        lights.forEach(function (item) {
+          item.classList.remove('firstGetpoint', 'pointLight-out1', 'pointLight-out2', 'highlight', 'nothighlight');
+          item.classList.add('nothighlight');
+
+        })
+
+      } else if (Number(result_ball.value) === 0 && Number(result_score.value) % 5 === 0) {
+
+        //****順便一起抓data-ticket的值****
+        // const getPointId = document.getElementById('pointLight20');
+        // const ticketValue = getPointId.getAttribute('data-ticket');
+        // console.log(ticketValue);
+        console.log(123456789);
+
+        setTimeout(function () {//這裡加上清除所有動畫樣式
+
+          lights.forEach(function (item) {
+            //將"不是"得分的分數反灰
+            if (item.id !== `pointLight${(result_score.value)}`) {
               item.classList.remove('firstGetpoint', 'pointLight-out1', 'pointLight-out2', 'highlight', 'nothighlight');
               item.classList.add('nothighlight');
 
-            })
-
-          } else if (Number(result_ball.value) === 0 && Number(result_score.value) % 5 === 0) {
-
-            //****順便一起抓data-ticket的值****
-            // const getPointId = document.getElementById('pointLight20');
-            // const ticketValue = getPointId.getAttribute('data-ticket');
-            // console.log(ticketValue); 
-            setTimeout(function () {//這裡加上清除所有動畫樣式
-
-              lights.forEach(function (item) {
-                //將"不是"得分的分數反灰
-                if (item.id !== `pointLight${(result_score.value)}`) {
-                  item.classList.remove('firstGetpoint', 'pointLight-out1', 'pointLight-out2', 'highlight', 'nothighlight');
-                  item.classList.add('nothighlight');
-
-                } else {
-                  item.classList.remove('firstGetpoint', 'pointLight-out1', 'pointLight-out2', 'highlight', 'nothighlight');
-                  item.classList.add('highlight');
-
-                }
-              });
-
-            }, 3000);
-          }
-
-        }
-
-
-
-
-
-
-        //按開機鈕自動播放
-        const pressBoot = document.getElementById('pressBoot');
-        const countdownElement = document.getElementById('result_ball');  //球數那欄顯示倒數秒數
-        let bootNumber = 0;  //計算開機次數
-
-        pressBoot.addEventListener('click', function () {
-          //倒數
-          let countdown = 3;
-
-          const countdownInterval = setInterval(function () {
-            //將倒數加到球數的input內
-            countdownElement.value = countdown;
-            countdown--;
-
-            if (countdown < 0) {
-              clearInterval(countdownInterval);
-              countdownElement.value = ''; // 隱藏倒數元素
-
-              playBootMusic();  //插入playBootMusic功能
+            } else {
+              item.classList.remove('firstGetpoint', 'pointLight-out1', 'pointLight-out2', 'highlight', 'nothighlight');
+              item.classList.add('highlight');
 
             }
-          }, 1000); // 每秒更新一次倒數
+          });
 
+        }, 3000);
+      }
 
-        })
-
-
-        //執行bootMusic1或2或3的功能
-        function playBootMusic() {
-
-          if (bootNumber % 3 === 1) {
-            bootNumber++;  //這裡移動到此，每首歌可以正常輪序
-
-            bootMusic1_1.play(); // 播放音樂1(有開頭)
-
-            // 播放音樂(不含開頭)
-            bootMusic1_1.onended = function () {
-              bootMusic1_2.play();
-            };
-
-            //bootMusic1_2再播放一次
-            bootMusic1_2.onended = function () {
-              bootMusic1_3.play();  //等同於不含開頭音樂播放兩次
-              //播完音樂後開機次數加上一次，蓋掉最前面的bootNumber變數
-              document.getElementById('bootNumber').textContent = bootNumber;  //顯示開機次數
-            };
-
-          } else if (bootNumber % 3 === 2) {
-            bootMusic2_1.play(); // 播放音樂1(有開頭)
-
-            // 播放音樂(不含開頭)
-            bootMusic2_1.onended = function () {
-              bootMusic2_2.play();
-            };
-
-            //bootMusic1_2再播放一次
-            bootMusic2_2.onended = function () {
-              bootMusic2_3.play();  //等同於不含開頭音樂播放兩次
-              //播完音樂後開機次數加上一次，蓋掉最前面的bootNumber變數
-              bootNumber++;
-              document.getElementById('bootNumber').textContent = bootNumber;  //顯示開機次數
-            };
-          } else if (bootNumber % 3 === 0) {
-            bootMusic3_1.play(); // 播放音樂1(有開頭)
-
-            // 播放音樂(不含開頭)
-            bootMusic3_1.onended = function () {
-              bootMusic3_2.play();
-            };
-
-            //bootMusic1_2再播放一次
-            bootMusic3_2.onended = function () {
-              bootMusic3_3.play();  //等同於不含開頭音樂播放兩次
-              //播完音樂後開機次數加上一次，蓋掉最前面的bootNumber變數
-              bootNumber++;
-              document.getElementById('bootNumber').textContent = bootNumber;  //顯示開機次數
-            };
-          }
-
-        }
+    }
 
 
 
-        //每投一次硬幣(每點擊一次)，有5球(要讓後台知道有5顆球要辨識)
-
-        let coinCount = 0;
-        buttonInsertCoin.addEventListener('click', function () {
-          cointMusic.play();  //播放投幣音樂
-
-          coinCount++;
-          pointAmount.value = coinCount; //增加投幣次數
-          if (parseInt(document.getElementById('result_ball').value) === 0) {
-            console.log(document.getElementById('result_ball').value);  //抓不到?
-
-            pointAmount.value--;
-          }
-
-        })
 
 
 
-        //藍色閃爍
-        const blueLight = document.getElementById('blueLight');
+    //按開機鈕自動播放
+    const pressBoot = document.getElementById('pressBoot');
+    const countdownElement = document.getElementById('result_ball');  //球數那欄顯示倒數秒數
+    let bootNumber = 0;  //計算開機次數
 
-        //點擊開始遊戲，音樂和閃爍換成別種播放樣式
-        const buttonStartGame = document.getElementById('button_start_game');
-        const startMusic = document.getElementById('startMusic');
+    pressBoot.addEventListener('click', function () {
+      //倒數
+      let countdown = 3;
 
-        buttonStartGame.addEventListener('click', function () {
-          // 暫停和歸零 開機音樂 的效果
-          bootMusic1_1.pause();
-          bootMusic1_2.pause();
-          bootMusic1_3.pause();
-          bootMusic2_1.pause();
-          bootMusic2_2.pause();
-          bootMusic2_3.pause();
-          bootMusic3_1.pause();
-          bootMusic3_2.pause();
-          bootMusic3_3.pause();
+      const countdownInterval = setInterval(function () {
+        //將倒數加到球數的input內
+        countdownElement.value = countdown;
+        countdown--;
 
-
-          startMusic.play();   //播放開始音樂
-
-          //開始13秒後，自動播放打彈珠時的背景音樂1
-          startMusic.onended = function () {
-            setTimeout(function () {
-              playMusic1.play();
-            }, 13000);
-          };
-
-          //打彈珠時的背景音樂2
-          playMusic1.onended = function () {
-            playMusic2.play();
-          }
-
-
-          // 點擊開始>閃爍燈號樣式
-          //先清除原有燈號樣式
-          lights.forEach(function (item) {
-            item.classList.remove('firstGetpoint', 'pointLight-out1', 'pointLight-out2', 'highlight', 'startlight'); //加這一行，其他動畫不會繼續跑出來
-            void item.offsetWidth;  //加上這一行強制重新整理，避免startlight沒移除
-            item.classList.add('startlight');
-          })
-
-        })
-
-
-        //拉桿
-        // **但不知為何點兩下，才會有反應**        
-        const pullBar = document.getElementById('barControl');
-        const bar = document.getElementById('bar');  //a標籤
-        const barImgLong = document.getElementById('barImgLong');
-        const barImgShort = document.getElementById('barImgShort');
-
-        bar.addEventListener('click', function () {
-          barImgLong.style.visibility = 'visible';
-          setInterval(function () {
-            barImgLong.style.visibility = 'hidden';
-            barImgShort.style.visibility = 'visible';
-          }, 600);
-          barImgShort.style.visibility = 'hidden';
-
-        })
-
-
-
-        //關機(待改正)
-        const pressShutdown = document.getElementById('pressShutdown');
-        pressShutdown.addEventListener('click', function () {
-          // 暫停或清除音樂播放器
-          bootMusic1_1.pause();
-          bootMusic1_2.pause();
-          bootMusic1_3.pause();
-          bootMusic2_1.pause();
-          bootMusic2_2.pause();
-          bootMusic2_3.pause();
-          bootMusic3_1.pause();
-          bootMusic3_2.pause();
-          bootMusic3_3.pause();
-          startMusic.pause();
-          playMusic1.pause();
-          playMusic2.pause();
-
-          // 清除計時器
+        if (countdown < 0) {
           clearInterval(countdownInterval);
+          countdownElement.value = ''; // 隱藏倒數元素
 
-          // 重置倒數元素
-          countdownElement.value = '';
+          playBootMusic();  //插入playBootMusic功能
 
-          // 清除點燈動畫效果
-          lights.forEach(function (item) {
+        }
+      }, 1000); // 每秒更新一次倒數
 
-            item.classList.remove('firstGetpoint', 'pointLight-out1', 'pointLight-out2', 'highlight', 'startlight', 'darken', 'nothighlight', 'mouseFlash');
-            item.style.animation = 'none';
-            void item.offsetWidth; // 強制重新繪製，使上面的樣式生效
-          });
 
+    })
+
+
+    //執行bootMusic1或2或3的功能
+    function playBootMusic() {
+
+      if (bootNumber % 3 === 1) {
+        bootNumber++;  //這裡移動到此，每首歌可以正常輪序
+
+        bootMusic1_1.play(); // 播放音樂1(有開頭)
+
+        // 播放音樂(不含開頭)
+        bootMusic1_1.onended = function () {
+          bootMusic1_2.play();
+        };
+
+        //bootMusic1_2再播放一次
+        bootMusic1_2.onended = function () {
+          bootMusic1_3.play();  //等同於不含開頭音樂播放兩次
+          //播完音樂後開機次數加上一次，蓋掉最前面的bootNumber變數
+          document.getElementById('bootNumber').textContent = bootNumber;  //顯示開機次數
+        };
+
+      } else if (bootNumber % 3 === 2) {
+        bootMusic2_1.play(); // 播放音樂1(有開頭)
+
+        // 播放音樂(不含開頭)
+        bootMusic2_1.onended = function () {
+          bootMusic2_2.play();
+        };
+
+        //bootMusic1_2再播放一次
+        bootMusic2_2.onended = function () {
+          bootMusic2_3.play();  //等同於不含開頭音樂播放兩次
+          //播完音樂後開機次數加上一次，蓋掉最前面的bootNumber變數
+          bootNumber++;
+          document.getElementById('bootNumber').textContent = bootNumber;  //顯示開機次數
+        };
+      } else if (bootNumber % 3 === 0) {
+        bootMusic3_1.play(); // 播放音樂1(有開頭)
+
+        // 播放音樂(不含開頭)
+        bootMusic3_1.onended = function () {
+          bootMusic3_2.play();
+        };
+
+        //bootMusic1_2再播放一次
+        bootMusic3_2.onended = function () {
+          bootMusic3_3.play();  //等同於不含開頭音樂播放兩次
+          //播完音樂後開機次數加上一次，蓋掉最前面的bootNumber變數
+          bootNumber++;
+          document.getElementById('bootNumber').textContent = bootNumber;  //顯示開機次數
+        };
+      }
+
+    }
+
+
+
+    //每投一次硬幣(每點擊一次)，有5球(要讓後台知道有5顆球要辨識)
+
+    let coinCount = 0;
+    buttonInsertCoin.addEventListener('click', function () {
+      cointMusic.play();  //播放投幣音樂
+
+      coinCount++;
+      pointAmount.value = coinCount; //增加投幣次數
+      if (parseInt(document.getElementById('result_ball').value) === 0) {
+        console.log(document.getElementById('result_ball').value);  //抓不到?
+
+        pointAmount.value--;
+      }
+
+    })
+
+
+
+    //藍色閃爍
+    const blueLight = document.getElementById('blueLight');
+
+    //點擊開始遊戲，音樂和閃爍換成別種播放樣式
+    const buttonStartGame = document.getElementById('button_start_game');
+    const startMusic = document.getElementById('startMusic');
+
+    buttonStartGame.addEventListener('click', function () {
+      // 暫停和歸零 開機音樂 的效果
+      bootMusic1_1.pause();
+      bootMusic1_2.pause();
+      bootMusic1_3.pause();
+      bootMusic2_1.pause();
+      bootMusic2_2.pause();
+      bootMusic2_3.pause();
+      bootMusic3_1.pause();
+      bootMusic3_2.pause();
+      bootMusic3_3.pause();
+
+
+      startMusic.play();   //播放開始音樂
+
+      //開始13秒後，自動播放打彈珠時的背景音樂1
+      startMusic.onended = function () {
+        setTimeout(function () {
+          playMusic1.play();
+        }, 13000);
+      };
+
+      //打彈珠時的背景音樂2
+      playMusic1.onended = function () {
+        playMusic2.play();
+      }
+
+
+      // 點擊開始>閃爍燈號樣式
+      //先清除原有燈號樣式
+      lights.forEach(function (item) {
+        item.classList.remove('firstGetpoint', 'pointLight-out1', 'pointLight-out2', 'highlight', 'startlight'); //加這一行，其他動畫不會繼續跑出來
+        void item.offsetWidth;  //加上這一行強制重新整理，避免startlight沒移除
+        item.classList.add('startlight');
+      })
+
+    })
+
+
+    //拉桿
+    // **但不知為何點兩下，才會有反應**        
+    const pullBar = document.getElementById('barControl');
+    const bar = document.getElementById('bar');  //a標籤
+    const barImgLong = document.getElementById('barImgLong');
+    const barImgShort = document.getElementById('barImgShort');
+
+    bar.addEventListener('click', function () {
+      barImgLong.style.visibility = 'visible';
+      setInterval(function () {
+        barImgLong.style.visibility = 'hidden';
+        barImgShort.style.visibility = 'visible';
+      }, 600);
+      barImgShort.style.visibility = 'hidden';
+
+    })
+
+
+
+    //關機(待改正)
+    const pressShutdown = document.getElementById('pressShutdown');
+    pressShutdown.addEventListener('click', function () {
+      // 暫停或清除音樂播放器
+      bootMusic1_1.pause();
+      bootMusic1_2.pause();
+      bootMusic1_3.pause();
+      bootMusic2_1.pause();
+      bootMusic2_2.pause();
+      bootMusic2_3.pause();
+      bootMusic3_1.pause();
+      bootMusic3_2.pause();
+      bootMusic3_3.pause();
+      startMusic.pause();
+      playMusic1.pause();
+      playMusic2.pause();
+
+      // 清除計時器
+      clearInterval(countdownInterval);
+
+      // 重置倒數元素
+      countdownElement.value = '';
+
+      // 清除點燈動畫效果
+      lights.forEach(function (item) {
+
+        item.classList.remove('firstGetpoint', 'pointLight-out1', 'pointLight-out2', 'highlight', 'startlight', 'darken', 'nothighlight', 'mouseFlash');
+        item.style.animation = 'none';
+        void item.offsetWidth; // 強制重新繪製，使上面的樣式生效
+      });
+
+    })
+
+
+    //拉桿-手機震動
+    // 檢查是否支援 Vibration API
+    // 手機點擊時震動 400 毫秒
+    bar.addEventListener("click", function () {
+      navigator.vibrate(400);
+    });
+
+
+
+
+    //串接ajax功能
+    const BIZLUTION_RESTFUL_API_URL = "http://61.222.52.130:60050/"
+    $(document).ready(function () {
+
+      function insertCoin() {
+        $.ajax({
+          url: BIZLUTION_RESTFUL_API_URL + 'insert_coin',
+          async: false,
+          error: function (result) {
+          },
+          success: function (result) {
+
+          }
         })
+      }
 
 
-        //拉桿-手機震動
-        // 檢查是否支援 Vibration API
-        // 手機點擊時震動 400 毫秒
-        bar.addEventListener("click", function () {
-          navigator.vibrate(400);
-        });
+      function startGame() {
+        $.ajax({
+          url: BIZLUTION_RESTFUL_API_URL + 'start_game',
+          async: false,
+          error: function (result) {
+          },
+          success: function (result) {
 
-
-
-        //滾動效果
-        let center_y = 0
-        document.addEventListener("DOMContentLoaded", () => {
-          console.log("Hello World!");
-          const scroller = document.querySelector("#scroller");
-          const output = document.querySelector("#output");
-          scroller.addEventListener("scroll", (event) => {
-            //output.textContent = `scrollTop: ${scroller.scrollTop}`;
-            //scroller.scroll(0,400)
-            console.log('' + scroller.scrollTop);
-          });
-
-          startup();
-        });
-        window.onresize = function () { startup(); };
-        function handleStart() {
-
-          console.log('handleStart');
-        }
-        function handleEnd() {
-
-          // $("#scroller").scrollTop(800);
-          scroller.scroll({
-            top: center_y,
-            left: 0,
-            behavior: "smooth",
-          });
-        }
-        function handleMove() {
-
-          console.log('handleMove');
-        }
-        function handleCancel() {
-          console.log('handleCancel');
-          scroller.scroll({
-            top: center_y,
-            left: 0,
-            behavior: "smooth",
-          });
-        }
-
-
-        var limit = Math.max(document.body.scrollHeight, document.body.offsetHeight,
-          document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);
-        function startup() {
-          const image = document.querySelector("#imageblock");
-          const scroller = document.querySelector("#scroller");
-          image.addEventListener("touchstart", handleStart);
-          image.addEventListener("touchend", handleEnd);
-          image.addEventListener("touchcancel", handleCancel);
-          image.addEventListener("touchmove", handleMove);
-          let realWidth = image.naturalWidth;
-          let realHeight = image.naturalHeight;
-          console.log(image.offsetHeight + " " + realHeight);
-          console.log(image.offsetWidth + " " + realWidth);
-          console.log(document.documentElement.clientHeight)
-          console.log(document.documentElement.clientWidth)
-          console.log("Initialized.");
-          realHeight = 2000
-          realWidth = 600
-          imageHeight = realHeight * document.documentElement.clientWidth / realWidth
-          center_y = (imageHeight - document.documentElement.clientHeight) / 2
-          scroller.scroll({
-            top: center_y,
-            left: 0,
-            behavior: "instant",
-          });
-        }
-
-
-
-
-
-        //串接ajax功能
-        const BIZLUTION_RESTFUL_API_URL = "http://61.222.52.130:60050/"
-        $(document).ready(function () {
-
-          function insertCoin() {
-            $.ajax({
-              url: BIZLUTION_RESTFUL_API_URL + 'insert_coin',
-              async: false,
-              error: function (result) {
-              },
-              success: function (result) {
-
-              }
-            })
           }
-
-
-          function startGame() {
-            $.ajax({
-              url: BIZLUTION_RESTFUL_API_URL + 'start_game',
-              async: false,
-              error: function (result) {
-              },
-              success: function (result) {
-
-              }
-            })
-          }
-
-          function getResult() {
-            $.ajax({
-              dataType: "json",
-              url: BIZLUTION_RESTFUL_API_URL + 'get_result',
-              async: true,
-              error: function (result) {
-              },
-              success: function (result) {
-
-                $('#result_score').val(result.data.score)
-                $('#result_ball').val(result.data.ball)
-                $('#result_detail').val(result.data.detail)
-
-                //加 result score
-                result_score.value = result.data.score;
-                document.getElementById('result_score').value = result.data.score;
-                console.log(result_score.value);
-                console.log(document.getElementById(`pointLight${result_score.value}`));
-
-                //將球數內容改為:5-API的ball數量
-                const remainingBalls = 5 - parseInt($('#result_ball').val())
-                console.log(remainingBalls);
-                document.getElementById('result_ball').value = remainingBalls;
-
-                //得分球亮燈功能
-                handleResultScoreChange();
-
-              }
-            })
-          }
-
-
-
-
-          //網址http://192.168.1.59:5000/insert_coin 自動跳出功能並執行
-          //依照此id可執行
-          $('#button_insert_coin').on('click', function (event) {
-            insertCoin()
-            //當球數為0時，減一
-          })
-
-          $('#button_start_game').on('click', function (event) {
-            startGame()
-          })
-
-
-          function foo() {
-            getResult()
-            setTimeout(foo, 1000)
-          }
-          foo()
-
-
         })
+      }
+
+      function getResult() {
+        $.ajax({
+          dataType: "json",
+          url: BIZLUTION_RESTFUL_API_URL + 'get_result',
+          async: true,
+          error: function (result) {
+          },
+          success: function (result) {
+
+            $('#result_score').val(result.data.score)
+            $('#result_ball').val(result.data.ball)
+            $('#result_detail').val(result.data.detail)
+
+            //加 result score
+            result_score.value = result.data.score;
+            document.getElementById('result_score').value = result.data.score;
+            console.log(result_score.value);
+            console.log(document.getElementById(`pointLight${result_score.value}`));
+
+            //將球數內容改為:5-API的ball數量
+            const remainingBalls = 5 - parseInt($('#result_ball').val())
+            console.log(remainingBalls);
+            document.getElementById('result_ball').value = remainingBalls;
+
+            //得分球亮燈功能
+            handleResultScoreChange();
+
+          }
+        })
+      }
 
 
 
-      </script>
+
+      //網址http://192.168.1.59:5000/insert_coin 自動跳出功能並執行
+      //依照此id可執行
+      $('#button_insert_coin').on('click', function (event) {
+        insertCoin()
+        //當球數為0時，減一
+      })
+
+      $('#button_start_game').on('click', function (event) {
+        startGame()
+      })
+
+
+      function foo() {
+        getResult()
+        setTimeout(foo, 1000)
+      }
+      foo()
+
+
+    })
+
+
+
+  </script>
 </body>
 
 </html>
